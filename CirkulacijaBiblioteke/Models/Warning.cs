@@ -15,6 +15,7 @@ namespace CirkulacijaBiblioteke.Models
         public Warning(DateTime date)
         {
             Date = date;
+
         }
     }
 }
