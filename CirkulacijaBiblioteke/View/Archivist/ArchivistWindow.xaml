@@ -15,6 +15,10 @@
         <DataTemplate DataType="{x:Type vm:AddBookInstanceViewModel}">
             <view:AddBookInstanceView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:BooksPaneViewModel}">
+            <view:BooksPaneView />
+        </DataTemplate>
+
        
     </Window.Resources>
     <Grid>

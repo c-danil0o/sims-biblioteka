@@ -9,8 +9,12 @@
         Title="LibrarianWindow" Height="600" Width="920"
         Background="#29262e">
     <Window.Resources>
-
-       
+        <DataTemplate DataType="{x:Type vm:NewAccountViewModel}">
+            <view:NewAccountView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:NewMemberCardViewModel}">
+            <view:NewMemberCardView />
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -24,8 +28,10 @@
         <TextBlock Text="Librarian" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left"
                    Margin="20, 0, 0, 0" />
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <RadioButton Content="Add Tfitle" Height="50" Foreground="WhiteSmoke"
-                         Style="{DynamicResource ToggleTheme}" Command="{Binding AddTitleCommand}" />
+            <RadioButton Content="New User Account" Height="50" Foreground="WhiteSmoke"
+                         Style="{DynamicResource ToggleTheme}" Command="{Binding NewAccountCommand}" />
+            <RadioButton Content="New Member Card" Height="50" Foreground="WhiteSmoke"
+                         Style="{DynamicResource ToggleTheme}" Command="{Binding NewMemberCardCommand}" />
          
 
         </StackPanel>

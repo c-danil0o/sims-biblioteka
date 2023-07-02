@@ -29,21 +29,6 @@ public class BooksPaneViewModel: ViewModelBase
         _books = _allBooks;
         
     }
-    /*public EquipmentPaneViewModel(IInventoryService inventoryService)
-    {
-        _lock = new object();
-        _inventoryService = inventoryService;
-        _inventoryService.DataChanged += (s, e) => UpdateTable();
-        _allInventory = new ObservableCollection<InventoryViewModel>();
-        foreach (var inventoryItem in _inventoryService.GetAll())
-            _allInventory.Add(new InventoryViewModel(inventoryItem));
-        _inventory = _allInventory;
-        EquipmentTypes = new ObservableCollection<string>();
-        RoomTypes = new ObservableCollection<string>();
-        Quantities = new ObservableCollection<string>();
-        BindingOperations.EnableCollectionSynchronization(_inventory, _lock);
-        LoadComboBoxCollections();
-    }*/
 
     public string SearchBox
     {

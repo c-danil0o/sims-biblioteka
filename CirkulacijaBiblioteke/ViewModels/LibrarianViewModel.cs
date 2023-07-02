@@ -9,16 +9,15 @@ public class LibrarianViewModel : ViewModelBase
 
     public LibrarianViewModel()
     {
-      
-        
-     
+        //_currentView =  DEFAULTNI viewmodel
 
-       
-        //_currentView = 
+        NewAccountCommand = new DelegateCommand(o => NewAccountView());
+        NewMemberCardCommand= new DelegateCommand(o => NewMemberCardView());
 
     }
 
-    public ICommand LoadAppointmentCommand { get; private set; }
+    public ICommand NewAccountCommand { get; private set; }
+    public ICommand NewMemberCardCommand { get; private set; }
     
 
     public object CurrentView
@@ -31,11 +30,15 @@ public class LibrarianViewModel : ViewModelBase
         }
     }
 
-    public void LoadAppointments()
+    private void NewMemberCardView()
     {
-        /*CurrentView = new AppointmentShowViewModel(_user, _scheduleService, _doctorService, _patientService,
-            _medicalRecordService, _inventoryService, _roomService);*/
+        
     }
 
-   
+    private void NewAccountView()
+    {
+       // CurrentView = new view model za to
+    }
+
+
 }
