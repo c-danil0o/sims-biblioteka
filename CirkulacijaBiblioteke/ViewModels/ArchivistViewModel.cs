@@ -8,16 +8,22 @@ public class ArchivistViewModel : ViewModelBase
     private object _currentView;
 
 
+    
+
     public ArchivistViewModel()
     {
         
 
+        ViewBooksCommand = new DelegateCommand(o => BooksView());
+        AddTitleCommand = new DelegateCommand(o => AddTitleView());
+        AddBookInstanceCommand = new DelegateCommand(o => AddBookInstanceView());
 
-        //_currentView = new PatientReceptionViewModel(_patientService, _scheduleService);
+        _currentView = new BooksPaneViewModel();
     }
 
-    public ICommand NewPatientReceptionCommand { get; private set; }
-
+    public ICommand ViewBooksCommand { get; private set; }
+    public ICommand AddTitleCommand { get; private set; }
+    public ICommand AddBookInstanceCommand { get; private set; }
 
 
 
@@ -31,10 +37,20 @@ public class ArchivistViewModel : ViewModelBase
         }
     }
 
-    public void NewPatientReception()
+    private void BooksView()
     {
-        //CurrentView = new PatientReceptionViewModel(_patientService, _scheduleService);
+        CurrentView = new BooksPaneViewModel();
     }
 
+    private void AddTitleView()
+    {
+        CurrentView = new AddTitleViewModel();
+    }
+
+    private void AddBookInstanceView()
+    {
+        CurrentView = new AddBookInstanceViewModel();
+    }
+    
    
 }

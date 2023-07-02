@@ -16,4 +16,9 @@ public class Author
         Name = name;
         LastName = lastName;
     }
+
+    public override string ToString()
+    {
+        return $"{Name} {LastName}";
+    }
 }

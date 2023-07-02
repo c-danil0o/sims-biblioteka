@@ -4,12 +4,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
+        xmlns:view="clr-namespace:CirkulacijaBiblioteke.View"
+        xmlns:vm="clr-namespace:CirkulacijaBiblioteke.ViewModels"
         Title="LibrarianWindow" Height="600" Width="920"
         Background="#29262e">
     <Window.Resources>
-        <!--<DataTemplate DataType="{x:Type doctor:AppointmentShowViewModel}">
-            <views:AppointmentTableView />
-        </DataTemplate>-->
+
        
     </Window.Resources>
     <Grid>
@@ -24,8 +24,9 @@
         <TextBlock Text="Librarian" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left"
                    Margin="20, 0, 0, 0" />
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <RadioButton Content="Appointments" Height="50" Foreground="WhiteSmoke"
-                         Style="{DynamicResource ToggleTheme}" Command="{Binding LoadAppointmentCommand}" />
+            <RadioButton Content="Add Tfitle" Height="50" Foreground="WhiteSmoke"
+                         Style="{DynamicResource ToggleTheme}" Command="{Binding AddTitleCommand}" />
+         
 
         </StackPanel>
         <ContentControl Grid.RowSpan="2" Background="#29262e" Content="{Binding Path=CurrentView}" Grid.Row="0"

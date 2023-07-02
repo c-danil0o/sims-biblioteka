@@ -15,4 +15,9 @@ public class Publisher
         Name = name;
         City = city;
     }
+
+    public override string ToString()
+    {
+        return $"{Name}, {City}";
+    }
 }
