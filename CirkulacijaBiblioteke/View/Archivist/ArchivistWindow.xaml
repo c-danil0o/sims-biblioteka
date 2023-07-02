@@ -3,26 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:nurse="clr-namespace:ZdravoCorp.GUI.PatientFiles.MedicalRecords.ViewModels"
-        xmlns:views="clr-namespace:ZdravoCorp.GUI.PatientFiles.MedicalRecords.Views"
-        xmlns:viewModels="clr-namespace:ZdravoCorp.GUI.Scheduling.ViewModels"
-        xmlns:views1="clr-namespace:ZdravoCorp.GUI.Scheduling.Views"
         mc:Ignorable="d"
         Title="ArchivistWindow" Height="600" Width="920"
         Background="#29262e">
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type nurse:PatientReceptionViewModel}">
+        <!--<DataTemplate DataType="{x:Type nurse:PatientReceptionViewModel}">
             <views:PatientReceptionView />
-        </DataTemplate>
+        </DataTemplate>-->
 
-        <DataTemplate DataType="{x:Type viewModels:UrgentAppointmentViewModel}">
-            <views1:UrgentAppointmentView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type main:ChatViewModel}">
-            <main:ChatView/>
-        </DataTemplate>
-
+        
     </Window.Resources>
 
 
@@ -40,10 +30,6 @@
         <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton Content="New Patient Reception" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding NewPatientReceptionCommand}" />
-            <RadioButton Content="Urgent Appointment" Height="50" Foreground="WhiteSmoke"
-                         Style="{DynamicResource ToggleTheme}" Command="{Binding UrgentAppointmentReservationCommand}" />
-            <RadioButton Content="Chat" Height="50" Foreground="WhiteSmoke" Style="{DynamicResource ToggleTheme}"
-                         Command="{Binding LoadChatCommand}" />
     
         </StackPanel>
         <ContentControl Grid.RowSpan="2" Background="#29262e" Content="{Binding Path=CurrentView}" Grid.Row="0"

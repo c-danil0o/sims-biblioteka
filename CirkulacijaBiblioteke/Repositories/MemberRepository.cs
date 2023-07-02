@@ -8,7 +8,7 @@ namespace CirkulacijaBiblioteke.Repositories;
 
 public class MemberRepository : ISerializable
 {
-    private readonly string _fileName = @".\..\..\..\..\Data\equipment.json";
+    private readonly string _fileName = @".\..\..\..\Data\members.json";
     private List<Member>? _members;
 
     public MemberRepository()

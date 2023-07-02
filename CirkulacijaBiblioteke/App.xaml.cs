@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.Utilities;
 using CirkulacijaBiblioteke.View;
 
@@ -21,8 +22,11 @@ namespace CirkulacijaBiblioteke
             Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
             var idg = new IDGenerator();
             var roomIdg = new MembershipCardIDGenerator();
+            var repositoryLocator = new RepositoryLocator();
+            var serviceLocator = new ServiceLocator(repositoryLocator);
+            
 
-            var dialog = new LoginDialog();
+            var dialog = new LoginDialog(serviceLocator.UserAccountService);
 
             if (dialog.ShowDialog() == true)
             {

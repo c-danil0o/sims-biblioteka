@@ -7,7 +7,7 @@ namespace CirkulacijaBiblioteke.Utilities;
 public  class MembershipCardIDGenerator
 {
     private static int _currentId;
-    private static readonly string _fileName = @".\..\..\..\..\Data\idg.json";
+    private static readonly string _fileName = @".\..\..\..\Data\idg.json";
     public MembershipCardIDGenerator()
     {
         _currentId = LoadFromFile();

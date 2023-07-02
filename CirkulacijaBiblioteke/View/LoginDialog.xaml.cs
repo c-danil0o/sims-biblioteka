@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using CirkulacijaBiblioteke.Models;
+using CirkulacijaBiblioteke.Repositories;
+using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.View.Archivist;
 using CirkulacijaBiblioteke.View.Librarian;
 using CirkulacijaBiblioteke.View.Member;
@@ -13,11 +15,12 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
 {
     private string? _email;
     private string? _password;
-    //private UserAccountService _userService;
+    private UserAccountService _userService;
 
-    public LoginDialog()
+    public LoginDialog(UserAccountService userService)
     {
         InitializeComponent();
+        _userService = userService;
         DataContext = this;
     }
 
@@ -70,12 +73,11 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
                
                 Application.Current.MainWindow = new LibrarianWindow
                 {
-                    DataContext = new LibrarianViewModel(user)
+                    DataContext = new LibrarianViewModel()
                 };
                 
 
                 break;
-            =
         }
     }
 
