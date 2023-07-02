@@ -22,7 +22,7 @@ namespace CirkulacijaBiblioteke.Services
             return _paymentRepository.GetAll() as List<Payment>;
         }
 
-        public void AddMember(Payment payment)
+        public void AddPayment(Payment payment)
         {
             _paymentRepository.Insert(payment);
             DataChanged?.Invoke(this, new EventArgs());

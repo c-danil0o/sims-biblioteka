@@ -37,7 +37,7 @@ public class LibrarianViewModel : ViewModelBase
 
     private void NewAccountView()
     {
-       // CurrentView = new view model za to
+        CurrentView = new NewAccountView();
     }
 
 
