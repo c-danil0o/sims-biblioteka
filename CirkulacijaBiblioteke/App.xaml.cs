@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using CirkulacijaBiblioteke.Utilities;
+using CirkulacijaBiblioteke.View;
 
 namespace CirkulacijaBiblioteke
 {
@@ -13,5 +15,26 @@ namespace CirkulacijaBiblioteke
     /// </summary>
     public partial class App : Application
     {
+        private void ApplicationStart(object sender, StartupEventArgs e)
+        {
+            //Disable shutdown when the dialog closes
+            Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            var idg = new IDGenerator();
+            var roomIdg = new MembershipCardIDGenerator();
+
+            var dialog = new LoginDialog();
+
+            if (dialog.ShowDialog() == true)
+            {
+                Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+                dialog.Close();
+                if (Current.MainWindow != null) Current.MainWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Invalid login.", "Error", MessageBoxButton.OK);
+                Current.Shutdown(-1);
+            }
+        }
     }
 }
