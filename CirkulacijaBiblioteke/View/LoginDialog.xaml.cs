@@ -63,14 +63,16 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
         switch (user.Type)
         {
             case UserAccount.AccountType.Member:
-                //Start director view
                 Application.Current.MainWindow = new MemberWindow
                     { DataContext = new MemberViewModel() };
                 ;
                 break;
+            case UserAccount.AccountType.Archivist:
+                Application.Current.MainWindow = new ArchivistWindow()
+                    { DataContext = new ArchivistViewModel() };
+                ;
+                break;
             case UserAccount.AccountType.Librarian:
-                //Start patient view
-               
                 Application.Current.MainWindow = new LibrarianWindow
                 {
                     DataContext = new LibrarianViewModel()

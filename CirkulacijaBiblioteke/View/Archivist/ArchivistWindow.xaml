@@ -25,8 +25,8 @@
             <ColumnDefinition Width="162" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Nurse" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left"
-                   Margin="20,0,0,0" Height="32" Width="85" />
+        <TextBlock Text="Archivist" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left"
+                   Margin="20,0,0,0" Height="32" Width="90" />
         <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton Content="New Patient Reception" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding NewPatientReceptionCommand}" />

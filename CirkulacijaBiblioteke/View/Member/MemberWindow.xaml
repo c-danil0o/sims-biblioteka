@@ -23,7 +23,7 @@
             <ColumnDefinition Width="180" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Director" Foreground="White" FontSize="24" VerticalAlignment="Center"
+        <TextBlock Text="Member" Foreground="White" FontSize="24" VerticalAlignment="Center"
                    HorizontalAlignment="Left" Margin="20, 0, 0, 0" />
         <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton Content="View Books" Height="50" Foreground="WhiteSmoke"

@@ -21,7 +21,7 @@
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Doctor" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left"
+        <TextBlock Text="Librarian" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left"
                    Margin="20, 0, 0, 0" />
         <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton Content="Appointments" Height="50" Foreground="WhiteSmoke"
