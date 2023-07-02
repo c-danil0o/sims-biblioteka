@@ -11,7 +11,7 @@ namespace CirkulacijaBiblioteke.Repositories;
 
 public class TitleRepository : ISerializable
 {
-    private readonly string _fileName = @".\..\..\..\Data\members.json";
+    private readonly string _fileName = @".\..\..\..\Data\titles.json";
     private List<Title>? _titles;
 
     public TitleRepository()
