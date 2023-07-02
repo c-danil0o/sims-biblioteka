@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.View;
 
 namespace CirkulacijaBiblioteke.ViewModels;
@@ -7,18 +8,18 @@ public class ArchivistViewModel : ViewModelBase
 {
     private object _currentView;
 
-
+    private TitleService _titleService;
     
 
-    public ArchivistViewModel()
+    public ArchivistViewModel(TitleService titleService)
     {
-        
+        _titleService = titleService;
 
         ViewBooksCommand = new DelegateCommand(o => BooksView());
         AddTitleCommand = new DelegateCommand(o => AddTitleView());
         AddBookInstanceCommand = new DelegateCommand(o => AddBookInstanceView());
 
-        _currentView = new BooksPaneViewModel();
+        _currentView = new BooksPaneViewModel(_titleService);
     }
 
     public ICommand ViewBooksCommand { get; private set; }
@@ -39,7 +40,7 @@ public class ArchivistViewModel : ViewModelBase
 
     private void BooksView()
     {
-        CurrentView = new BooksPaneViewModel();
+        CurrentView = new BooksPaneViewModel(_titleService);
     }
 
     private void AddTitleView()

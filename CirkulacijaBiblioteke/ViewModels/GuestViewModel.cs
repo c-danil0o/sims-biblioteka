@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.View;
 
 namespace CirkulacijaBiblioteke.ViewModels;
@@ -7,16 +8,16 @@ public class GuestViewModel : ViewModelBase
 {
     private object _currentView;
 
-
+    private TitleService _titleService;
     
 
-    public GuestViewModel()
+    public GuestViewModel(TitleService titleService)
     {
-        
+        _titleService = titleService;
 
         ViewBooksCommand = new DelegateCommand(o => BooksView());
 
-        _currentView = new BooksPaneViewModel();
+        _currentView = new BooksPaneViewModel(_titleService);
     }
 
     public ICommand ViewBooksCommand { get; private set; }
@@ -35,6 +36,6 @@ public class GuestViewModel : ViewModelBase
 
     public void BooksView()
     {
-        CurrentView = new BooksPaneViewModel();
+        CurrentView = new BooksPaneViewModel(_titleService);
     }
 }

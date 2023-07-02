@@ -17,14 +17,14 @@ public class TitleService
         _titleRepository = titleRepository;
     }
 
-    public List<Member>? GetAll()
+    public List<Title>? GetAll()
     {
-        return _titleRepository.GetAll() as List<Member>;
+        return _titleRepository.GetAll() as List<Title>;
     }
 
-    public Title? GetById(string jmbg)
+    public Title? GetById(string isbn)
     {
-        return _titleRepository.GetById(jmbg);
+        return _titleRepository.GetById(isbn);
     }
 
     public void AddMember(Title member)

@@ -5,6 +5,7 @@ using System.Windows;
 using CirkulacijaBiblioteke.Models;
 using CirkulacijaBiblioteke.Repositories;
 using CirkulacijaBiblioteke.Services;
+using CirkulacijaBiblioteke.Utilities;
 using CirkulacijaBiblioteke.View.Archivist;
 using CirkulacijaBiblioteke.View.Guest;
 using CirkulacijaBiblioteke.View.Librarian;
@@ -18,11 +19,13 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
     private string? _email;
     private string? _password;
     private UserAccountService _userService;
+    private ServiceLocator _serviceLocator;
 
-    public LoginDialog(UserAccountService userService)
+    public LoginDialog(ServiceLocator serviceLocator)
     {
         InitializeComponent();
-        _userService = userService;
+        _serviceLocator = serviceLocator;
+        _userService = serviceLocator.UserAccountService;
         DataContext = this;
     }
 
@@ -71,7 +74,7 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
                 break;
             case UserAccount.AccountType.Archivist:
                 Application.Current.MainWindow = new ArchivistWindow()
-                    { DataContext = new ArchivistViewModel() };
+                    { DataContext = new ArchivistViewModel(_serviceLocator.TitleService) };
                 ;
                 break;
             case UserAccount.AccountType.Librarian:
@@ -121,7 +124,7 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
     {
         DialogResult = true;
         Application.Current.MainWindow = new GuestWindow
-            { DataContext = new GuestViewModel() };
+            { DataContext = new GuestViewModel(_serviceLocator.TitleService) };
         ;
     }
 }

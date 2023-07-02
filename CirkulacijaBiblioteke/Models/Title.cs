@@ -13,7 +13,7 @@ public class Title
     public string Name { get; set; }
     public string Description { get; set; }
     public string Format { get; set; }
-    public string TipKorica { get; set; }
+    public string Cover { get; set; }
     public int UDK { get; set; }
     public string ISBN { get; set; }
     public int Year { get; set; }
@@ -22,12 +22,12 @@ public class Title
     public List<BookInstance> BookInstances { get; set; }
 
     [JsonConstructor]
-    public Title(string name, string description, string format, string tipKorica, int udk, string isbn, int year, List<Author> authors, Publisher publisher, List<BookInstance> bookInstances)
+    public Title(string name, string description, string format, string cover, int udk, string isbn, int year, List<Author> authors, Publisher publisher, List<BookInstance> bookInstances)
     {
         Name = name;
         Description = description;
         Format = format;
-        TipKorica = tipKorica;
+        Cover= cover;
         UDK = udk;
         ISBN = isbn;
         Year = year;

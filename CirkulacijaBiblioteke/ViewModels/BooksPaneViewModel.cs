@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Data;
+using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.View;
 
 namespace CirkulacijaBiblioteke.ViewModels;
@@ -11,11 +12,21 @@ public class BooksPaneViewModel: ViewModelBase
      private readonly ObservableCollection<BookViewModel> _allBooks;
     private ObservableCollection<BookViewModel> _filteredBooks;
     private ObservableCollection<BookViewModel> _books;
+    private TitleService _titleService;
     private string _searchText = "";
 
 
-    public BooksPaneViewModel()
+    public BooksPaneViewModel(TitleService titleService)
     {
+        _titleService = titleService;
+        _titleService.DataChanged += (sender, args) => UpdateTable();
+        _allBooks = new ObservableCollection<BookViewModel>();
+        foreach (var title in _titleService.GetAll())
+        {
+            _allBooks.Add(new BookViewModel(title));
+        }
+
+        _books = _allBooks;
         
     }
     /*public EquipmentPaneViewModel(IInventoryService inventoryService)

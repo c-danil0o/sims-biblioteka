@@ -26,7 +26,7 @@ namespace CirkulacijaBiblioteke
             var repositoryLocator = new RepositoryLocator();
             var serviceLocator = new ServiceLocator(repositoryLocator);
 
-            var dialog = new LoginDialog(serviceLocator.UserAccountService);
+            var dialog = new LoginDialog(serviceLocator);
 
             if (dialog.ShowDialog() == true)
             {
