@@ -24,4 +24,9 @@ public class BookViewModel : ViewModelBase
 
         Authors = authors;
     }
+
+    public override string ToString()
+    {
+        return $"Title: {Title}, Isbn: {Isbn}, Year: {Year}, Authors: {Authors}, Publisher: {Publisher}";
+    }
 }

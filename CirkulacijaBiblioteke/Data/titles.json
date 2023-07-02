@@ -3,10 +3,10 @@
     "Name": "The Great Gatsby",
     "Description": "A novel about the American Dream",
     "Format": "Paperback",
-    "TipKorica": "Softcover",
+    "Cover": "Softcover",
     "UDK": 123456,
     "ISBN": "978-3-16-148410-0",
-    "Godina": 2020,
+    "Year": 2020,
     "Authors": [
       {
         "Name": "F. Scott",
@@ -34,10 +34,10 @@
     "Name": "To Kill a Mockingbird",
     "Description": "A classic novel set in the 1930s",
     "Format": "Hardcover",
-    "TipKorica": "Hardcover",
+    "Cover": "Hardcover",
     "UDK": 654321,
     "ISBN": "978-1-23-456789-0",
-    "Godina": 1960,
+    "Year": 1960,
     "Authors": [
       {
         "Name": "Harper",

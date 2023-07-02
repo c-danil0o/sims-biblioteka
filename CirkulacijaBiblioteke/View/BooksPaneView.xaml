@@ -23,7 +23,7 @@
                   IsReadOnly="True" AutoGenerateColumns="False" Margin="30" Name="BooksV">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Width="100" x:Name="Name" Binding="{Binding Title}" />
-                <DataGridTextColumn Header="Author" Binding="{Binding Author}" />
+                <DataGridTextColumn Header="Author" Binding="{Binding Authors}" />
                 <DataGridTextColumn Header="Publisher" Binding="{Binding Publisher}" />
                 <DataGridTextColumn Header="Year" Binding="{Binding Year}" />
                 <DataGridTextColumn Header="ISBN" Binding="{Binding Isbn}" Width="*" />

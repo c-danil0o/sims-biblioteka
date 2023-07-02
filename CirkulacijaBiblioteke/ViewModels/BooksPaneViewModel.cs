@@ -59,7 +59,7 @@ public class BooksPaneViewModel: ViewModelBase
  
     public IEnumerable<BookViewModel> Books
     {
-        get => _allBooks;
+        get => _books;
         set
         {
             _books = new ObservableCollection<BookViewModel>(value);
