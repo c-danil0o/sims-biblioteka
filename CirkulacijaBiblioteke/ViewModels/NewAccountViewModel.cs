@@ -1,4 +1,5 @@
-﻿using CirkulacijaBiblioteke.Services;
+﻿using CirkulacijaBiblioteke.Models;
+using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.View;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace CirkulacijaBiblioteke.ViewModels
     public class NewAccountViewModel : ViewModelBase
     {
         private MemberService _memberService;
+        private UserAccountService _userAccountService;
         private string? _emailBox;
         private string? _passwordBox;
         private string? _nameBox;
@@ -144,10 +146,11 @@ namespace CirkulacijaBiblioteke.ViewModels
             }
         }
 
-        public NewAccountViewModel(MemberService memberService)
+        public NewAccountViewModel(MemberService memberService, UserAccountService userAccountService)
         {
             _memberService = memberService;
             RegisterCommand = new DelegateCommand(o => { Register(); });
+            _userAccountService = userAccountService;
         }
         public ICommand RegisterCommand { get; private set; }
         private void Register()
@@ -158,9 +161,10 @@ namespace CirkulacijaBiblioteke.ViewModels
             }
             else
             {
-                _memberService.AddMember(new Models.Member(JMBGBox, NameBox, LastNameBox, PhoneBox,
-                    new Models.UserAccount(EmailBox, PasswordBox, Models.UserAccount.AccountType.Member),
-                    new Models.Address(CityBox, StreetBox, NumberBox)));
+                UserAccount account = new UserAccount(EmailBox, PasswordBox, UserAccount.AccountType.Member);
+                _userAccountService.AddUser(account);
+                _memberService.AddMember(new Models.Member(JMBGBox, NameBox, LastNameBox, PhoneBox, account,
+                    new Address(CityBox, StreetBox, NumberBox)));
             }
         }
 
