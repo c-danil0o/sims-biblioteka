@@ -80,7 +80,7 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
             case UserAccount.AccountType.Librarian:
                 Application.Current.MainWindow = new LibrarianWindow
                 {
-                    DataContext = new LibrarianViewModel()
+                    DataContext = new LibrarianViewModel(_serviceLocator.MemberService)
                 };
                 
 

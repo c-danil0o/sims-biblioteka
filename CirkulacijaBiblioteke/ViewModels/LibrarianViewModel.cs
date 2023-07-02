@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.View;
 
 namespace CirkulacijaBiblioteke.ViewModels;
@@ -6,10 +7,11 @@ namespace CirkulacijaBiblioteke.ViewModels;
 public class LibrarianViewModel : ViewModelBase
 {
     private object _currentView;
-
-    public LibrarianViewModel()
+    private MemberService _memberService;
+    public LibrarianViewModel(MemberService memberService)
     {
-        //_currentView =  DEFAULTNI viewmodel
+        _memberService = memberService;
+        _currentView = new NewAccountViewModel(memberService);
 
         NewAccountCommand = new DelegateCommand(o => NewAccountView());
         NewMemberCardCommand= new DelegateCommand(o => NewMemberCardView());
@@ -37,7 +39,7 @@ public class LibrarianViewModel : ViewModelBase
 
     private void NewAccountView()
     {
-        CurrentView = new NewAccountView();
+        CurrentView = new NewAccountViewModel(_memberService);
     }
 
 
