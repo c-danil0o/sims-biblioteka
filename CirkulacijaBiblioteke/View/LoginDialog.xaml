@@ -24,8 +24,11 @@
         <Label Grid.Row="3" Foreground="LightGray" Margin="20, 30, 0, 0">Password</Label>
         <PasswordBox Grid.Row="4" Margin="0, 1, 0 ,0 " Width="350" Height="30" FontSize="18" Name="PasswordBox"
                      PasswordChanged="PasswordBox_OnPasswordChanged" MaxLength="10" />
-
-        <Button Grid.Row="5" Width="80" Height="30" Margin="50" Name="LoginButton" Click="LoginButton_OnClick" IsDefault="True">Log In</Button>
+        <StackPanel Orientation="Horizontal" Grid.Row="5">
+            <Button  Width="100" Height="30" Margin="50" Name="LoginButton" Click="LoginButton_OnClick" IsDefault="True">Log In</Button>
+            <Button  Width="100" Height="30" Margin="50" Name="LoginAsGuestButton" Click="LoginAsGuestButton_OnClick"  IsDefault="True">Log In As Guest</Button>
+        </StackPanel>
+       
 
     </Grid>
 </Window>

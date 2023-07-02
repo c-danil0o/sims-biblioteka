@@ -1,0 +1,39 @@
+﻿<Window x:Class="CirkulacijaBiblioteke.View.Guest.GuestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:view="clr-namespace:CirkulacijaBiblioteke.View"
+        xmlns:vm="clr-namespace:CirkulacijaBiblioteke.ViewModels"
+        mc:Ignorable="d"
+        Title="GuestWindow" Height="600" Width="1020"
+        Background="#29262e">
+    <Window.Resources>
+        <!--<DataTemplate DataType="{x:Type vm:}">
+            <views:EquipmentView />
+        </DataTemplate>-->
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Guest" Foreground="White" FontSize="24" VerticalAlignment="Center"
+                   HorizontalAlignment="Left" Margin="20, 0, 0, 0" />
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <RadioButton Content="View Books" Height="50" Foreground="WhiteSmoke"
+                         Style="{DynamicResource ToggleTheme}" Command="{Binding ViewBooksCommand}" />
+            
+
+        </StackPanel>
+        <ContentControl Grid.RowSpan="2" Background="#29262e" Content="{Binding Path=CurrentView}" Grid.Row="0"
+                        Grid.Column="1" Margin="10" />
+    </Grid>
+
+
+</Window>

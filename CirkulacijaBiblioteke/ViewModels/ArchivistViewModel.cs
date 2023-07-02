@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
+using CirkulacijaBiblioteke.View;
 
-namespace CirkulacijaBiblioteke.View.Archivist;
+namespace CirkulacijaBiblioteke.ViewModels;
 
 public class ArchivistViewModel : ViewModelBase
 {

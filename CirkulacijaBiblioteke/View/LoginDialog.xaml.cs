@@ -6,8 +6,10 @@ using CirkulacijaBiblioteke.Models;
 using CirkulacijaBiblioteke.Repositories;
 using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.View.Archivist;
+using CirkulacijaBiblioteke.View.Guest;
 using CirkulacijaBiblioteke.View.Librarian;
 using CirkulacijaBiblioteke.View.Member;
+using CirkulacijaBiblioteke.ViewModels;
 
 namespace CirkulacijaBiblioteke.View;
 
@@ -113,5 +115,13 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
     private void PasswordBox_OnPasswordChanged(object sender, RoutedEventArgs e)
     {
         Password = PasswordBox.Password;
+    }
+
+    private void LoginAsGuestButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        DialogResult = true;
+        Application.Current.MainWindow = new GuestWindow
+            { DataContext = new GuestViewModel() };
+        ;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
-using ZdravoCorp.GUI.Main;
+using CirkulacijaBiblioteke.View;
 
-namespace CirkulacijaBiblioteke.View.Member;
+namespace CirkulacijaBiblioteke.ViewModels;
 
 public class MemberViewModel : ViewModelBase
 

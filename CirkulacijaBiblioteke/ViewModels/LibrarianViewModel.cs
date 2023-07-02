@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
+using CirkulacijaBiblioteke.View;
 
-namespace CirkulacijaBiblioteke.View.Librarian;
+namespace CirkulacijaBiblioteke.ViewModels;
 
 public class LibrarianViewModel : ViewModelBase
 {
