@@ -29,12 +29,6 @@ namespace CirkulacijaBiblioteke.Models
             Fines = fines;
         }
 
-        public void UpdateMembership(Membership membership) 
-        {
-            Membership = membership;
-        }
-
-
     }
 
 }

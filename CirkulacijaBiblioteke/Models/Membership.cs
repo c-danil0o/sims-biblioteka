@@ -17,7 +17,7 @@ namespace CirkulacijaBiblioteke.Models
         public int MembershipExtensionDeadline { get; set; }
 
         [JsonConstructor]
-        public Membership(int id,MembershipType type, float price, int maxNumberOfBooks, int membershipExtensionDeadline)
+        public Membership(int id, MembershipType type, float price, int maxNumberOfBooks, int membershipExtensionDeadline)
         {
             Id = id;
             Type = type;
@@ -25,5 +25,6 @@ namespace CirkulacijaBiblioteke.Models
             MaxNumberOfBooks = maxNumberOfBooks;
             MembershipExtensionDeadline = membershipExtensionDeadline;
         }
+
     }
 }
