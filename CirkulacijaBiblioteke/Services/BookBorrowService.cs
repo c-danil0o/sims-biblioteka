@@ -26,7 +26,7 @@ namespace CirkulacijaBiblioteke.Services
             return _bookBorrowRepository.GetById(id);
         }
 
-        public void AddMember(BookBorrow bookBorrow)
+        public void AddBookBorrow(BookBorrow bookBorrow)
         {
             _bookBorrowRepository.Insert(bookBorrow);
             DataChanged?.Invoke(this, new EventArgs());

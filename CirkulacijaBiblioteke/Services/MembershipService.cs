@@ -22,7 +22,7 @@ namespace CirkulacijaBiblioteke.Services
             return _membershipRepository.GetAll() as List<Membership>;
         }
 
-        public void AddMember(Membership membership)
+        public void AddMembership(Membership membership)
         {
             _membershipRepository.Insert(membership);
             DataChanged?.Invoke(this, new EventArgs());
