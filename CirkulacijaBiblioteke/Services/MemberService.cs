@@ -43,7 +43,7 @@ public class MemberService
 
     }
     
-
+    
 
     public void Delete(string jmbg)
     {
