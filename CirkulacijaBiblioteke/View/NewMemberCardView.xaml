@@ -7,7 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Content="Search:" Foreground="WhiteSmoke" VerticalAlignment="Top" Margin="231,30,495,0" FontSize="14"></Label>
         <TextBox Text="{Binding Path = SearchBox , Mode = OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                  Width="180" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,24,0,386" />
         <DataGrid ItemsSource="{Binding Members, UpdateSourceTrigger=PropertyChanged}"
@@ -15,11 +14,17 @@
                   SelectionMode="Single"
                   IsReadOnly="True" AutoGenerateColumns="False" Margin="30,128,30,199" Name="BooksV">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="First name" Width="200" x:Name="Name" Binding="{Binding FirstName}" />
-                <DataGridTextColumn Header="Last name" Width="200" Binding="{Binding LastName}" />
-                <DataGridTextColumn Header="JMBG" Width="330" Binding="{Binding JMBG}" />
+                <DataGridTextColumn Header="First name" Width="140" x:Name="Name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last name" Width="140" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="JMBG" Width="140" Binding="{Binding JMBG}" />
+                <DataGridTextColumn Header="Membership Type" Width="140" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Card Expired" Width="100" Binding="{Binding Expired}" />
+
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding CreateMemberCardCommand}" Content="Create Member Card" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Height="40" Width="148" FontSize="14"/>
+        <Button Command="{Binding CreateMemberCardCommand}" Content="Create Member Card" HorizontalAlignment="Left" Margin="320,362,0,0" VerticalAlignment="Top" Height="40" Width="148" FontSize="14"/>
+        <Button Command="{Binding ExtendMemberCardCommand}" Content="Extend Member Card" HorizontalAlignment="Left" Margin="148,362,0,0" VerticalAlignment="Top" FontSize="14" Height="40" Width="148"/>
+        <Button Command="{Binding ChangeMemberCardCommand}" Content="Change Member Card" HorizontalAlignment="Left" Margin="486,362,0,0" VerticalAlignment="Top" FontSize="14" Height="40" Width="148"/>
+        <Label Content="Search : " HorizontalAlignment="Left" Margin="198,79,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FFF3EDED"/>
     </Grid>
 </UserControl>

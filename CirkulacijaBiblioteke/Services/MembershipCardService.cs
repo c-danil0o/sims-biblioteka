@@ -22,15 +22,20 @@ namespace CirkulacijaBiblioteke.Services
             return _membershipCardRepository.GetAll() as List<MembershipCard>;
         }
 
+        public MembershipCard GetById(int id)
+        {
+            return _membershipCardRepository.GetById(id);
+        }
+
         public void AddMembershipCard(MembershipCard membershipCard)
         {
             _membershipCardRepository.Insert(membershipCard);
             DataChanged?.Invoke(this, new EventArgs());
         }
 
-        public void Update(int id, MembershipCard membershipCard)
+        public void Update(MembershipCard membershipCard)
         {
-            var oldMember = _membershipCardRepository.GetById(id);
+            var oldMember = _membershipCardRepository.GetById(membershipCard.Id);
             if (oldMember == null)
             {
                 throw new KeyNotFoundException();
@@ -44,6 +49,13 @@ namespace CirkulacijaBiblioteke.Services
         {
             _membershipCardRepository.Delete(_membershipCardRepository.GetById(id));
             DataChanged?.Invoke(this, new EventArgs());
+        }
+
+        public void ExtendCard(int id)
+        {
+            var card = GetById(id);
+            card.ValidUntil = DateTime.Now.AddMonths(6);
+            Update(card);
         }
 
         public event EventHandler? DataChanged;

@@ -25,6 +25,9 @@ public class NewMemberCardViewModel : ViewModelBase
     private string _searchText = "";
 
     public ICommand CreateMemberCardCommand { get; set; }
+    public ICommand ExtendMemberCardCommand { get; set; }
+    public ICommand ChangeMemberCardCommand { get; set; }
+
 
     public NewMemberCardViewModel(MemberService memberService, MembershipService membershipService, MembershipCardService membershipCardService)
     {
@@ -35,10 +38,12 @@ public class NewMemberCardViewModel : ViewModelBase
         _allMembers = new ObservableCollection<MemberViewModel>();
         foreach (var member in _memberService.GetAll())
         {
-            _allMembers.Add(new MemberViewModel(member));
+            _allMembers.Add(new MemberViewModel(member, membershipCardService));
         }
         _members = _allMembers;
         CreateMemberCardCommand = new DelegateCommand(o => CreateMemberCard());
+        ExtendMemberCardCommand = new DelegateCommand(o => ExtendMemberCard());
+        ChangeMemberCardCommand = new DelegateCommand(o => ChangeMemberCard());
     }
 
     public MemberViewModel SelectedMember { get; set; } 
@@ -68,6 +73,11 @@ public class NewMemberCardViewModel : ViewModelBase
 
     private void UpdateTable()
     {
+        _allMembers = new ObservableCollection<MemberViewModel>();
+        foreach (var member in _memberService.GetAll())
+        {
+            _allMembers.Add(new MemberViewModel(member, _membershipCardService));
+        }
         _filteredMembers = _allMembers;
         var wh = _filteredMembers.Intersect(UpdateTableFromSearch());
         Members = wh;
@@ -105,6 +115,51 @@ public class NewMemberCardViewModel : ViewModelBase
         };
         window.Show();
 
+    }
+
+    private void ExtendMemberCard()
+    {
+        if (SelectedMember == null)
+        {
+            MessageBox.Show("None selected", "Error", MessageBoxButton.OK);
+            return;
+        }
+        var member = _memberService.GetById(SelectedMember.JMBG);
+        if (member.CardNumber == -1)
+        {
+            MessageBox.Show("Member dont have a card", "Error", MessageBoxButton.OK);
+            return;
+        }
+        var card = _membershipCardService.GetById(member.CardNumber);
+        if (card.ValidUntil > DateTime.Now)
+        {
+            MessageBox.Show("Card havent expired yet", "Error", MessageBoxButton.OK);
+            return;
+        }
+        _membershipCardService.ExtendCard(member.CardNumber);
+        MessageBox.Show("Card extended successfully", "Error", MessageBoxButton.OK);
+        UpdateTable();
+    }
+
+    private void ChangeMemberCard()
+    {
+        if (SelectedMember == null)
+        {
+            MessageBox.Show("None selected", "Error", MessageBoxButton.OK);
+            return;
+        }
+        var member = _memberService.GetById(SelectedMember.JMBG);
+        if (member.CardNumber == -1)
+        {
+            MessageBox.Show("Member dont have a card", "Error", MessageBoxButton.OK);
+            return;
+        }
+        var window = new CreateMemberCardView()
+        {
+            DataContext = new CreateMemberCardViewModel(_membershipService, _membershipCardService, _memberService, member.JMBG)
+        };
+        window.Show();
+        UpdateTable();
     }
 
 

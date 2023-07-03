@@ -21,6 +21,6 @@
                 <DataGridTextColumn Header="MaxBooks" Width="160" Binding="{Binding MaxBooks}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding CreateMemberCardCommand}" Content="Create" HorizontalAlignment="Left" Margin="259,266,0,0" VerticalAlignment="Top" Height="42" Width="109"/>
+        <Button Command="{Binding CreateMemberCardCommand}" Content="Submit" HorizontalAlignment="Left" Margin="259,266,0,0" VerticalAlignment="Top" Height="42" Width="109"/>
     </Grid>
 </Window>
