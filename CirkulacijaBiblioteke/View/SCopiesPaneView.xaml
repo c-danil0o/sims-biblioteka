@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="CirkulacijaBiblioteke.View.SCopiesPaneView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CirkulacijaBiblioteke.View"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="700"
+             Background="#29262e">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,20, 0, 0" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Label Content="Search:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
+            <TextBox Text="{Binding Path = SearchBox , Mode = OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                     Width="180" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5" />
+            <Button Content="Add Copy" Padding="5" Height="30" Margin="40,0,20,0" Command="{Binding AddBookCommand}"></Button>
+            <Button Content="Remove Copy" Padding="5" Height="30" Margin="20,0" Command="{Binding RemoveBookCommand}"> </Button>
+            
+        </StackPanel>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Books, UpdateSourceTrigger=PropertyChanged}"
+                  SelectionMode="Single"
+                  IsReadOnly="True" AutoGenerateColumns="False" Margin="30" Name="BooksV">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Width="100" x:Name="Name" Binding="{Binding Title}" />
+                <DataGridTextColumn Header="Author" Binding="{Binding Authors}" />
+                <DataGridTextColumn Header="Publisher" Binding="{Binding Publisher}" />
+                <DataGridTextColumn Header="Year" Binding="{Binding Year}" />
+                <DataGridTextColumn Header="ISBN" Binding="{Binding Isbn}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+
+</UserControl>

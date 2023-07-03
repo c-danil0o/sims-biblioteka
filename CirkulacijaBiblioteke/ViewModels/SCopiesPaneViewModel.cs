@@ -2,7 +2,7 @@
 
 namespace CirkulacijaBiblioteke.ViewModels;
 
-public class MViewModel : ViewModelBase
+public class SCopiesPaneViewModel : ViewModelBase
 {
     
 }

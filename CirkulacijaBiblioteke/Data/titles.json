@@ -17,7 +17,7 @@
       "Name": "Scribner",
       "City": "New York"
     },
-    "BookInstances": [
+    "Copies": [
       {
         "InventoryNumber": 1,
         "Price": 19.99,
@@ -48,7 +48,7 @@
       "Name": "J. B. Lippincott & Co.",
       "City": "Philadelphia"
     },
-    "BookInstances": [
+    "Copies": [
       {
         "InventoryNumber": 3,
         "Price": 14.99,
@@ -57,7 +57,7 @@
       {
         "InventoryNumber": 4,
         "Price": 9.99,
-        "State": "Demaged"
+        "State": "Damaged"
       }
     ]
   }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CirkulacijaBiblioteke.Models;
 
-public class BookInstance
+public class Copy
 {
     public int InventoryNumber { get; set; }
     public float Price { get; set; }
@@ -17,6 +17,6 @@ public class BookInstance
     {
         Available,
         Taken,
-        Demaged
+        Damaged
     }
 }

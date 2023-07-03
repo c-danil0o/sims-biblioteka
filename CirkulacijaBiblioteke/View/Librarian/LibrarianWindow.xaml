@@ -12,9 +12,6 @@
         <DataTemplate DataType="{x:Type vm:NewAccountViewModel}">
             <view:NewAccountView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:NewMemberCardViewModel}">
-            <view:NewMemberCardView />
-        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

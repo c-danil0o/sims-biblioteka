@@ -3,11 +3,11 @@
 namespace CirkulacijaBiblioteke.View.Archivist;
 
 /// <summary>
-///     Interaction logic for ArchivistWindow.xaml
+///     Interaction logic for SpecialLibrarianWindow.xaml
 /// </summary>
-public partial class ArchivistWindow : Window
+public partial class SpecialLibrarianWindow : Window
 {
-    public ArchivistWindow()
+    public SpecialLibrarianWindow()
     {
         InitializeComponent();
     }

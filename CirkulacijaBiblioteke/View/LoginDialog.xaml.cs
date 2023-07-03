@@ -73,8 +73,8 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
                 ;
                 break;
             case UserAccount.AccountType.Archivist:
-                Application.Current.MainWindow = new ArchivistWindow()
-                    { DataContext = new ArchivistViewModel(_serviceLocator.TitleService) };
+                Application.Current.MainWindow = new SpecialLibrarianWindow()
+                    { DataContext = new SpecialLibrarianViewModel(_serviceLocator.TitleService) };
                 ;
                 break;
             case UserAccount.AccountType.Librarian:
