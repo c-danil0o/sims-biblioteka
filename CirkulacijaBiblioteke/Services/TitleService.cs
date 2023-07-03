@@ -27,9 +27,9 @@ public class TitleService
         return _titleRepository.GetById(isbn);
     }
 
-    public void AddMember(Title member)
+    public void AddTitle(Title title)
     {
-        _titleRepository.Insert(member);
+        _titleRepository.Insert(title);
         DataChanged?.Invoke(this, new EventArgs());
     }
 
