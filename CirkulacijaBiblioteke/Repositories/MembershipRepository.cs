@@ -56,5 +56,10 @@ namespace CirkulacijaBiblioteke.Repositories
         {
             return _memberships.FirstOrDefault(ms => ms.Id == id);
         }
+
+        public Membership GetByType(MembershipType type)
+        {
+            return _memberships.FirstOrDefault(ms => ms.Type == type);
+        }
     }
 }

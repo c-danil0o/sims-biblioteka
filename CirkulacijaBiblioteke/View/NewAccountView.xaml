@@ -43,23 +43,23 @@
             <TextBox Text="{Binding PhoneBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
-        <StackPanel Margin="63,291,0,109" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
+        <StackPanel Margin="71,270,0,130" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="City:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
             <TextBox Text="{Binding CityBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
-        <StackPanel Margin="301,291,0,109" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
+        <StackPanel Margin="300,273,0,127" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Street:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
             <TextBox Text="{Binding StreetBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
-        <StackPanel Margin="535,291,0,109" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
+        <StackPanel Margin="538,271,0,129" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Number:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
             <TextBox Text="{Binding NumberBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
 
-        <Button Margin="330,368,330,37" Name="RegisterButton" Command="{Binding RegisterCommand}"  IsDefault="True" Grid.Row="1">Register</Button>
+        <Button Margin="330,368,287,44" Name="RegisterButton" Command="{Binding RegisterCommand}"  IsDefault="True" Grid.Row="1">Register</Button>
 
     </Grid>
 </UserControl>

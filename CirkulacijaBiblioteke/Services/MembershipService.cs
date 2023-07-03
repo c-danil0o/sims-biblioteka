@@ -46,6 +46,11 @@ namespace CirkulacijaBiblioteke.Services
             DataChanged?.Invoke(this, new EventArgs());
         }
 
+        public Membership GetByType(MembershipType type)
+        {
+            return _membershipRepository.GetByType(type);
+        }
+
         public event EventHandler? DataChanged;
     }
 }

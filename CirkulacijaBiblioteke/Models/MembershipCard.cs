@@ -29,6 +29,16 @@ namespace CirkulacijaBiblioteke.Models
             Fines = fines;
         }
 
+        public MembershipCard(Membership membership, int id, DateTime validUntil, MembershipCardStatus status)
+        {
+            Membership = membership;
+            Id = id;
+            ValidUntil = validUntil;
+            Status = status;
+            Warnings = new List<Warning>();
+            Fines = new List<Fine>();
+        }
+
     }
 
 }

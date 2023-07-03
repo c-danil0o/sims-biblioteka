@@ -9,7 +9,7 @@ namespace CirkulacijaBiblioteke.ViewModels;
 
 public class BooksPaneViewModel: ViewModelBase
 {
-     private readonly ObservableCollection<BookViewModel> _allBooks;
+    private readonly ObservableCollection<BookViewModel> _allBooks;
     private ObservableCollection<BookViewModel> _filteredBooks;
     private ObservableCollection<BookViewModel> _books;
     private TitleService _titleService;

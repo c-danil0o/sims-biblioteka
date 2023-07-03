@@ -1,43 +1,29 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CirkulacijaBiblioteke.Models;
 using CirkulacijaBiblioteke.View;
 
 namespace CirkulacijaBiblioteke.ViewModels;
 
 public class MemberViewModel : ViewModelBase
-
 {
-    private object _currentView;
+    private Member _member;
+
+    public String FirstName => _member.Name;
+    public String LastName => _member.LastName;
+    public String JMBG => _member.JMBG;
 
 
-    
-
-    public MemberViewModel()
+    public MemberViewModel(Member member)
     {
-        
-
-        ViewBooksCommand = new DelegateCommand(o => EquipmentView());
-
-        //_currentView = new EquipmentPaneViewModel(_inventoryService);
+        _member = member;
     }
 
-    public ICommand ViewBooksCommand { get; private set; }
-
-
-
-    public object CurrentView
+    public override string ToString()
     {
-        get => _currentView;
-        set
-        {
-            _currentView = value;
-            OnPropertyChanged();
-        }
+        return $"First name : {FirstName}, Last name: {LastName}, JMBG: {JMBG}";
     }
-
-    public void EquipmentView()
-    {
-       // CurrentView = new EquipmentPaneViewModel(_inventoryService);
-    }
-
-    
 }

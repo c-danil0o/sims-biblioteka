@@ -69,7 +69,7 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
         {
             case UserAccount.AccountType.Member:
                 Application.Current.MainWindow = new MemberWindow
-                    { DataContext = new MemberViewModel() };
+                    { DataContext = new MemberWindowViewModel() };
                 ;
                 break;
             case UserAccount.AccountType.Archivist:
@@ -80,10 +80,9 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
             case UserAccount.AccountType.Librarian:
                 Application.Current.MainWindow = new LibrarianWindow
                 {
-                    DataContext = new LibrarianViewModel(_serviceLocator.MemberService)
+                    DataContext = new LibrarianViewModel(_serviceLocator.MemberService, _serviceLocator.UserAccountService, _serviceLocator.MembershipService, _serviceLocator.MembershipCardService)
                 };
                 
-
                 break;
         }
     }
