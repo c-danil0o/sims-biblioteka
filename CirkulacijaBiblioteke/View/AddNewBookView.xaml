@@ -7,7 +7,7 @@
              d:DataContext="{d:DesignInstance Type=vm:AddNewBookViewModel}"
              mc:Ignorable="d"
              Background="#29262e"
-             Title="AddNewBook" Width="500" Height="600"
+             Title="AddNewBook" Width="500" Height="700"
              WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>

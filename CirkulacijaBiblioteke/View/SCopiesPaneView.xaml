@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:CirkulacijaBiblioteke.View"
+             xmlns:vm="clr-namespace:CirkulacijaBiblioteke.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:SCopiesPaneViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="700"
              Background="#29262e">
@@ -16,19 +18,50 @@
             <Label Content="Search:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
             <TextBox Text="{Binding Path = SearchBox , Mode = OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                      Width="180" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5" />
-            <Button Content="Add Copy" Padding="5" Height="30" Margin="40,0,20,0" Command="{Binding AddBookCommand}"></Button>
-            <Button Content="Remove Copy" Padding="5" Height="30" Margin="20,0" Command="{Binding RemoveBookCommand}"> </Button>
-            
+            <Button Content="Add Copy" Padding="5" Height="30" Margin="40,0,20,0" Command="{Binding AddCopyCommand}"></Button>
+            <Button Content="Remove Copy" Padding="5" Height="30" Margin="20,0" Command="{Binding RemoveCopyCommand}"> </Button>
         </StackPanel>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Books, UpdateSourceTrigger=PropertyChanged}"
                   SelectionMode="Single"
-                  IsReadOnly="True" AutoGenerateColumns="False" Margin="30" Name="BooksV">
+                  IsReadOnly="True" AutoGenerateColumns="False" Margin="30" Name="BooksV"
+                  SelectedItem="{Binding SelectedCopy, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Width="100" x:Name="Name" Binding="{Binding Title}" />
-                <DataGridTextColumn Header="Author" Binding="{Binding Authors}" />
-                <DataGridTextColumn Header="Publisher" Binding="{Binding Publisher}" />
-                <DataGridTextColumn Header="Year" Binding="{Binding Year}" />
-                <DataGridTextColumn Header="ISBN" Binding="{Binding Isbn}" Width="*" />
+                <DataGridTextColumn Header="Title" x:Name="Name" Binding="{Binding Title}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Author" Binding="{Binding Authors}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Inventory Number" Binding="{Binding InventoryNumber}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="State" Binding="{Binding State}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

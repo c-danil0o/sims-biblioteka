@@ -51,6 +51,30 @@ public class TitleService
         DataChanged?.Invoke(this, new EventArgs());
     }
 
+    public void AddCopy(string isbn, Copy copy)
+    {
+
+        var book  = _titleRepository.GetById(isbn);
+        if (book.Copies == null)
+        {
+            var copies = new List<Copy>();
+            copies.Add(copy);
+            book.Copies = copies;
+        }
+        else
+        {
+            book.Copies.Add(copy);
+        }
+        Update(isbn, book);
+    }
+
+    public void DeleteCopy(string isbn, int inventoryNumber)
+    {
+        var book = _titleRepository.GetById(isbn);
+        book.Copies.RemoveAll(item => item.InventoryNumber == inventoryNumber);
+        Update(isbn, book);
+    }
+
 
 
     public event EventHandler? DataChanged;

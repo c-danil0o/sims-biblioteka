@@ -44,7 +44,7 @@ public class SpecialLibrarianViewModel : ViewModelBase
 
     private void CopiesView()
     {
-        CurrentView = new SCopiesPaneViewModel();
+        CurrentView = new SCopiesPaneViewModel(_titleService);
     }
     
    

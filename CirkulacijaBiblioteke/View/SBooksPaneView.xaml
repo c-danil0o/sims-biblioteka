@@ -28,7 +28,7 @@
                   IsReadOnly="True" AutoGenerateColumns="False" Margin="30" Name="BooksV"
                   SelectedItem="{Binding SelectedBook, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Width="100" x:Name="Name" Binding="{Binding Title}">
+                <DataGridTextColumn Header="Title" x:Name="Name" Binding="{Binding Title}">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
