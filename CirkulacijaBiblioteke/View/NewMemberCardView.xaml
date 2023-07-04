@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CirkulacijaBiblioteke.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#29262e">
     <Grid>
         <TextBox Text="{Binding Path = SearchBox , Mode = OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                  Width="180" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,24,0,386" />
@@ -14,11 +15,12 @@
                   SelectionMode="Single"
                   IsReadOnly="True" AutoGenerateColumns="False" Margin="30,128,30,199" Name="BooksV">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="First name" Width="140" x:Name="Name" Binding="{Binding FirstName}" />
-                <DataGridTextColumn Header="Last name" Width="140" Binding="{Binding LastName}" />
-                <DataGridTextColumn Header="JMBG" Width="140" Binding="{Binding JMBG}" />
-                <DataGridTextColumn Header="Membership Type" Width="140" Binding="{Binding Type}" />
-                <DataGridTextColumn Header="Card Expired" Width="100" Binding="{Binding Expired}" />
+                <DataGridTextColumn Header="First name"  x:Name="Name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="JMBG" Binding="{Binding JMBG}" />
+                <DataGridTextColumn Header="Membership Type" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Expiration Date"  Binding="{Binding ExpirationDate}" />
+                <DataGridTextColumn Header="Card Expired" Width="*" Binding="{Binding Expired}" />
 
             </DataGrid.Columns>
         </DataGrid>

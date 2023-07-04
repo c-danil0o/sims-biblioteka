@@ -14,17 +14,17 @@ namespace CirkulacijaBiblioteke.Models
         public DateTime ReturnDate { get; set; }
         public bool Returned { get; set; }
         public MembershipCard MembershipCard { get; set; }
-        public BookInstance BookInstance { get; set; }
+        public Copy Copy { get; set; }
 
         [JsonConstructor]
-        public BookBorrow(int id, DateTime creationDate, DateTime returnDate, bool returned, MembershipCard membershipCard, BookInstance bookInstance)
+        public BookBorrow(int id, DateTime creationDate, DateTime returnDate, bool returned, MembershipCard membershipCard, Copy copy)
         {
             Id = id;
             CreationDate = creationDate;
             ReturnDate = returnDate;
             Returned = returned;
             MembershipCard = membershipCard;
-            BookInstance = bookInstance;
+            Copy = copy;
         }
     }
 }

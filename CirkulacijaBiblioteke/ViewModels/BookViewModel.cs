@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CirkulacijaBiblioteke.Models;
 using CirkulacijaBiblioteke.View;
 
@@ -16,13 +17,8 @@ public class BookViewModel : ViewModelBase
     public BookViewModel(Title title)
     {
         _title = title;
-        var authors = "";
-        foreach (var author in _title.Authors)
-        {
-            authors += author.ToString() + ", ";
-        }
-
-        Authors = authors;
+        Authors = string.Join(',', _title.Authors);
+        
     }
 
     public override string ToString()

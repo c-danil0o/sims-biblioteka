@@ -6,17 +6,23 @@ using System.Threading.Tasks;
 
 namespace CirkulacijaBiblioteke.Models;
 
-public class BookInstance
+public class Copy
 {
     public int InventoryNumber { get; set; }
     public float Price { get; set; }
     public InstanceState State { get; set; }
-    public Title Title { get; set; }
+
+    public Copy(int inventoryNumber, float price, InstanceState state)
+    {
+        InventoryNumber = inventoryNumber;
+        Price = price;
+        State = state;
+    }
 
     public enum InstanceState
     {
         Available,
         Taken,
-        Demaged
+        Damaged
     }
 }

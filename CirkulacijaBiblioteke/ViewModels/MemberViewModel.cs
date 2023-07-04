@@ -19,6 +19,7 @@ public class MemberViewModel : ViewModelBase
     public String JMBG => _member.JMBG;
     public String Type { get; set; } 
     public String Expired { get; set; }
+    public String ExpirationDate { get; set; }
 
 
     public MemberViewModel(Member member, MembershipCardService membershipCardService)
@@ -30,11 +31,13 @@ public class MemberViewModel : ViewModelBase
         {
             Type = "None";
             Expired = "";
+            ExpirationDate = "";
         }
         else
         {
             Type = card.Membership.Type.ToString();
             Expired = card.ValidUntil < DateTime.Now ? "Yes" : "No";
+            ExpirationDate = card.ValidUntil.ToShortDateString();
         }
     }
 

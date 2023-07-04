@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CirkulacijaBiblioteke.Models
 {
-    public enum MembershipType { Unemployed, Child, Employee, Pensioner, Student }
+    public enum MembershipType { Unemployed, Child, Employed, Retired, Student }
     public class Membership
     {
         public int Id { get; set; }

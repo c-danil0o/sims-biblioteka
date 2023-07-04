@@ -15,22 +15,22 @@
   },
   {
     "Id": 3,
-    "Type": "Employee",
+    "Type": "Employed",
     "Price": 2000.0,
     "MaxNumberOfBooks": 5,
     "MembershipExtensionDeadline": 90
   },
   {
     "Id": 4,
-    "Type": "Pensioner",
-    "Price": 1000.0,
+    "Type": "Retired",
+    "Price": 0.0,
     "MaxNumberOfBooks": 2,
     "MembershipExtensionDeadline": 60
   },
   {
     "Id": 5,
     "Type": "Student",
-    "Price": 1000.0,
+    "Price": 800.0,
     "MaxNumberOfBooks": 4,
     "MembershipExtensionDeadline": 120
   }

@@ -27,9 +27,9 @@ public class TitleService
         return _titleRepository.GetById(isbn);
     }
 
-    public void AddMember(Title member)
+    public void AddTitle(Title title)
     {
-        _titleRepository.Insert(member);
+        _titleRepository.Insert(title);
         DataChanged?.Invoke(this, new EventArgs());
     }
 
@@ -49,6 +49,30 @@ public class TitleService
     {
         _titleRepository.Delete(_titleRepository.GetById(jmbg));
         DataChanged?.Invoke(this, new EventArgs());
+    }
+
+    public void AddCopy(string isbn, Copy copy)
+    {
+
+        var book  = _titleRepository.GetById(isbn);
+        if (book.Copies == null)
+        {
+            var copies = new List<Copy>();
+            copies.Add(copy);
+            book.Copies = copies;
+        }
+        else
+        {
+            book.Copies.Add(copy);
+        }
+        Update(isbn, book);
+    }
+
+    public void DeleteCopy(string isbn, int inventoryNumber)
+    {
+        var book = _titleRepository.GetById(isbn);
+        book.Copies.RemoveAll(item => item.InventoryNumber == inventoryNumber);
+        Update(isbn, book);
     }
 
 
