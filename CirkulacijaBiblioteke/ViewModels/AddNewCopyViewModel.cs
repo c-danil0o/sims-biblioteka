@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -21,6 +22,40 @@ public class AddNewCopyViewModel: ViewModelBase
     public List<Copy.InstanceState> Status { get; set; }    
    
     private ObservableCollection<BookViewModel> _books;
+    private  ObservableCollection<BookViewModel> _allBooks;
+    private ObservableCollection<BookViewModel> _filteredBooks;
+    private string _searchText = "";
+    
+    public string SearchBox
+    {
+        get => _searchText;
+        set
+        {
+            _searchText = value;
+            UpdateTable();
+            OnPropertyChanged("Search");
+        }
+    }
+    
+    private void UpdateTable()
+    {
+        _filteredBooks = _allBooks;
+        var wh = _filteredBooks.Intersect(UpdateTableFromSearch());
+        Books = wh;
+    }
+    
+    private ObservableCollection<BookViewModel> UpdateTableFromSearch()
+    {
+        if (_searchText != "")
+            return new ObservableCollection<BookViewModel>(Search(_searchText));
+        return _allBooks;
+    }
+
+
+    public IEnumerable<BookViewModel> Search(string inputText)
+    {
+        return _allBooks.Where(item => item.ToString().Contains(inputText));
+    }
   
     public ICommand Confirm { get; private set; }
     public event EventHandler? OnRequestClose;
@@ -32,15 +67,16 @@ public class AddNewCopyViewModel: ViewModelBase
         Confirm = new DelegateCommand(o => ConfirmAdd(), o => CanConfirm());
         Status = new List<Copy.InstanceState>();
         LoadBooks();
+        _books = _allBooks;
         LoadStatus();
     }
 
     private void LoadBooks()
     {
-        _books = new ObservableCollection<BookViewModel>();
+        _allBooks = new ObservableCollection<BookViewModel>();
         foreach (var title in _titleService.GetAll())
         {
-            _books.Add(new BookViewModel(title));
+            _allBooks.Add(new BookViewModel(title));
         }  
     }
 
@@ -64,7 +100,7 @@ public class AddNewCopyViewModel: ViewModelBase
     {
         for (int i = 0; i < Number; i++)
         {
-            var copy = new Copy(IDGenerator.GetId(), Price, (Copy.InstanceState)SelectedStatus);
+            var copy = new Copy(SimpleIDGenerator.GetId(), Price, (Copy.InstanceState)SelectedStatus);
             _titleService.AddCopy(SelectedBook.Isbn, copy);
         }
         OnRequestClose?.Invoke(this,EventArgs.Empty);   

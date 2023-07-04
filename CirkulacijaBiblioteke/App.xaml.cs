@@ -22,7 +22,7 @@ namespace CirkulacijaBiblioteke
             //Disable shutdown when the dialog closes
             Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
             var idg = new IDGenerator();
-            var roomIdg = new MembershipCardIDGenerator();
+            var roomIdg = new SimpleIDGenerator();
             var repositoryLocator = new RepositoryLocator();
             var serviceLocator = new ServiceLocator(repositoryLocator);
 

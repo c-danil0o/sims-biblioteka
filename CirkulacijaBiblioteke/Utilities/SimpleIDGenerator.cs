@@ -4,11 +4,11 @@ using Newtonsoft.Json;
 
 namespace CirkulacijaBiblioteke.Utilities;
 
-public  class MembershipCardIDGenerator
+public  class SimpleIDGenerator
 {
     private static int _currentId;
     private static readonly string _fileName = @".\..\..\..\Data\idg.json";
-    public MembershipCardIDGenerator()
+    public SimpleIDGenerator()
     {
         _currentId = LoadFromFile();
     }

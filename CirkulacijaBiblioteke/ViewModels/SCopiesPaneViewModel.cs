@@ -81,6 +81,11 @@ public class SCopiesPaneViewModel: ViewModelBase
     
     private void RemoveCopy()
     {
+        if (SelectedCopy.State == "Taken")
+        {
+            MessageBox.Show("You can't delete TAKEN copy!");
+            return;
+        }
         _titleService.DeleteCopy(SelectedCopy.Isbn, SelectedCopy.InventoryNumber);
         MessageBox.Show("Copy deleted.");
     }
