@@ -49,6 +49,11 @@ public class CreateMemberCardViewModel : ViewModelBase
             OnPropertyChanged();
         }
     }
+    private void CloseWindow()
+    {
+        var activeWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+        activeWindow?.Close();
+    }
 
     private void CreateCard()
     {
@@ -64,6 +69,7 @@ public class CreateMemberCardViewModel : ViewModelBase
         _membershipCardService.AddMembershipCard(card);
         _member.CardNumber = card.Id;
         _memberService.Update(_member);
-        MessageBox.Show("Member Card created successfully", "Success", MessageBoxButton.OK);
+        MessageBox.Show("Member Card created/changed successfully", "Success", MessageBoxButton.OK);
+        CloseWindow();
     }
 }

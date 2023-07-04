@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CirkulacijaBiblioteke.View"
         mc:Ignorable="d"
-        Title="CreateMemberCardView" Height="401" Width="606">
+        Title="ChangeMemberCardView" Height="401" Width="606">
     <Grid>
         <Label Content="First name : " HorizontalAlignment="Left" Margin="59,44,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="{Binding FirstName}" HorizontalAlignment="Left" Margin="159,44,0,0" VerticalAlignment="Top" Width="94" FontSize="16"/>

@@ -30,7 +30,7 @@
         <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton Content="New User Account" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding NewAccountCommand}" />
-            <RadioButton Content="New Member Card" Height="50" Foreground="WhiteSmoke"
+            <RadioButton Content="Member cards" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding NewMemberCardCommand}" />
          
 
