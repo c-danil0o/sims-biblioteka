@@ -26,10 +26,12 @@ public class LibrarianViewModel : ViewModelBase
 
         NewAccountCommand = new DelegateCommand(o => NewAccountView());
         NewMemberCardCommand = new DelegateCommand(o => NewMemberCardView());
+        ReturnBookCommand = new DelegateCommand(o => ReturnBookView());
     }
 
     public ICommand NewAccountCommand { get; private set; }
     public ICommand NewMemberCardCommand { get; private set; }
+    public ICommand ReturnBookCommand { get; private set; }
     
 
     public object CurrentView
@@ -52,5 +54,8 @@ public class LibrarianViewModel : ViewModelBase
         CurrentView = new NewAccountViewModel(_memberService, _userAccountService);
     }
 
-
+    private void ReturnBookView()
+    {
+        CurrentView = new ReturnBookViewModel(_bookBorrowService);
+    }
 }
