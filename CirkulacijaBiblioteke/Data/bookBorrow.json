@@ -1,1 +1,1 @@
-[]
+[{"Id":1541761960,"CreationDate":"2023-07-05T00:14:14.9538647+02:00","ReturnDate":"2023-08-05T00:14:14.9538894+02:00","Returned":false,"MembershipCard":{"Membership":{"Id":3,"Type":2,"Price":2000.0,"MaxNumberOfBooks":5,"MembershipExtensionDeadline":90},"Id":-560040703,"ValidUntil":"2024-01-04T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[]},"Copy":{"InventoryNumber":36,"Price":40.0,"State":0}}]

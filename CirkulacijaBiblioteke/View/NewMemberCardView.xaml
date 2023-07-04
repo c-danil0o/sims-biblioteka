@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CirkulacijaBiblioteke.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="480" d:DesignWidth="800"
              Background="#29262e">
     <Grid>
         <TextBox Text="{Binding Path = SearchBox , Mode = OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
@@ -27,6 +27,7 @@
         <Button Command="{Binding CreateMemberCardCommand}" Content="Create Member Card" HorizontalAlignment="Left" Margin="320,362,0,0" VerticalAlignment="Top" Height="40" Width="148" FontSize="14"/>
         <Button Command="{Binding ExtendMemberCardCommand}" Content="Extend Member Card" HorizontalAlignment="Left" Margin="148,362,0,0" VerticalAlignment="Top" FontSize="14" Height="40" Width="148"/>
         <Button Command="{Binding ChangeMemberCardCommand}" Content="Change Member Card" HorizontalAlignment="Left" Margin="486,362,0,0" VerticalAlignment="Top" FontSize="14" Height="40" Width="148"/>
+        <Button Command="{Binding BorrowBookCommand}" Content="Borrow book" HorizontalAlignment="Left" Margin="320,430,0,0" VerticalAlignment="Top" FontSize="14" Height="40" Width="148"/>
         <Label Content="Search : " HorizontalAlignment="Left" Margin="198,79,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FFF3EDED"/>
     </Grid>
 </UserControl>

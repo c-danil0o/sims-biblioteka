@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using CirkulacijaBiblioteke.Models;
+using CirkulacijaBiblioteke.Repositories;
 using CirkulacijaBiblioteke.Services;
 using CirkulacijaBiblioteke.View;
 using static System.Reflection.Metadata.BlobBuilder;
@@ -19,6 +20,8 @@ public class NewMemberCardViewModel : ViewModelBase
     private MemberService _memberService;
     private MembershipService _membershipService;
     private MembershipCardService _membershipCardService;
+    private TitleService _titleService;
+    private BookBorrowService _bookBorrowService;
     private ObservableCollection<MemberViewModel> _allMembers;
     private ObservableCollection<MemberViewModel> _filteredMembers;
     private ObservableCollection<MemberViewModel> _members;
@@ -27,13 +30,15 @@ public class NewMemberCardViewModel : ViewModelBase
     public ICommand CreateMemberCardCommand { get; set; }
     public ICommand ExtendMemberCardCommand { get; set; }
     public ICommand ChangeMemberCardCommand { get; set; }
+    public ICommand BorrowBookCommand { get; set; }
 
-
-    public NewMemberCardViewModel(MemberService memberService, MembershipService membershipService, MembershipCardService membershipCardService)
+    public NewMemberCardViewModel(MemberService memberService, MembershipService membershipService, MembershipCardService membershipCardService, TitleService titleService, BookBorrowService bookBorrowService)
     {
         _memberService = memberService;
         _membershipService = membershipService;
         _membershipCardService = membershipCardService;
+        _bookBorrowService = bookBorrowService;
+        _titleService = titleService;
         _memberService.DataChanged += (sender, args) => UpdateTable();
         _allMembers = new ObservableCollection<MemberViewModel>();
         foreach (var member in _memberService.GetAll())
@@ -44,6 +49,7 @@ public class NewMemberCardViewModel : ViewModelBase
         CreateMemberCardCommand = new DelegateCommand(o => CreateMemberCard());
         ExtendMemberCardCommand = new DelegateCommand(o => ExtendMemberCard());
         ChangeMemberCardCommand = new DelegateCommand(o => ChangeMemberCard());
+        BorrowBookCommand = new DelegateCommand(o => BorrowBook());
     }
 
     public MemberViewModel SelectedMember { get; set; } 
@@ -133,7 +139,7 @@ public class NewMemberCardViewModel : ViewModelBase
         var card = _membershipCardService.GetById(member.CardNumber);
         if (card.ValidUntil > DateTime.Now)
         {
-            MessageBox.Show("Card havent expired yet", "Error", MessageBoxButton.OK);
+            MessageBox.Show("Card hasn't expired yet", "Error", MessageBoxButton.OK);
             return;
         }
         _membershipCardService.ExtendCard(member.CardNumber);
@@ -162,5 +168,31 @@ public class NewMemberCardViewModel : ViewModelBase
         UpdateTable();
     }
 
+    private void BorrowBook()
+    {
+        if (SelectedMember == null)
+        {
+            MessageBox.Show("None selected", "Error", MessageBoxButton.OK);
+            return;
+        }
+        var member = _memberService.GetById(SelectedMember.JMBG);
+        if (member.CardNumber == -1)
+        {
+            MessageBox.Show("Member dont have a card", "Error", MessageBoxButton.OK);
+            return;
+        }
 
+        var membershipCard = _membershipCardService.GetById(member.CardNumber);
+        if (membershipCard.Status != MembershipCardStatus.Active)
+        {
+            MessageBox.Show("Member card is not active", "Error", MessageBoxButton.OK);
+            return;
+        }
+        
+        var window = new BorrowBookView()
+        {
+            DataContext = new BorrowBookViewModel(_titleService, _bookBorrowService, membershipCard)
+        };
+        window.Show();
+    }
 }

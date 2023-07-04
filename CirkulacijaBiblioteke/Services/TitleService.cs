@@ -75,7 +75,11 @@ public class TitleService
         Update(isbn, book);
     }
 
-
+    public Copy GetAvailableCopy(string isbn)
+    {
+        var book = _titleRepository.GetById(isbn);
+        return book?.Copies.FirstOrDefault(copy => copy.State == Copy.InstanceState.Available);
+    }
 
     public event EventHandler? DataChanged;
 }
