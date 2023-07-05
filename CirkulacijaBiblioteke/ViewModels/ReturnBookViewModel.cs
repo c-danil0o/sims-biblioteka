@@ -16,6 +16,7 @@ namespace CirkulacijaBiblioteke.ViewModels
         private BookBorrowService _bookBorrowService;
         private TitleService _titleService;
         private PaymentService _paymentService;
+        private MembershipCardService _membershipCardService;
         private ObservableCollection<BorrowedBooksViewModel> _borrowedBooks;
         private ObservableCollection<BorrowedBooksViewModel> _allBorrowedBooks;
         private ObservableCollection<BorrowedBooksViewModel> _filteredBorrowedBooks;
@@ -23,11 +24,12 @@ namespace CirkulacijaBiblioteke.ViewModels
 
         public ICommand ReturnBookCommand { get; }
 
-        public ReturnBookViewModel(BookBorrowService bookBorrowService, TitleService titleService, PaymentService paymentService)
+        public ReturnBookViewModel(BookBorrowService bookBorrowService, TitleService titleService, PaymentService paymentService, MembershipCardService membershipCardService)
         {
             _bookBorrowService = bookBorrowService;
             _titleService = titleService;
             _paymentService = paymentService;
+            _membershipCardService = membershipCardService;
             _bookBorrowService.DataChanged += (sender, args) => UpdateTable();
             _allBorrowedBooks = new ObservableCollection<BorrowedBooksViewModel>(
                 _bookBorrowService.GetAll()
@@ -110,13 +112,20 @@ namespace CirkulacijaBiblioteke.ViewModels
             }
 
             var borrowedBook = _bookBorrowService.GetById(SelectedBookBorrow.Id);
-            
+            var membersCard = borrowedBook.MembershipCard;
+
             if (IsBookDamaged)
             {
                 borrowedBook.Copy.State = Copy.InstanceState.Damaged;
+                
+
                 var payingRepairs = MessageBox.Show("Has member payed for damaging book?", "Warning", MessageBoxButton.YesNo);
                 if (payingRepairs == MessageBoxResult.Yes)
                 {
+                    var newFine = new Fine(DateTime.Now, true);
+                    membersCard.Fines.Add(newFine);
+                    _membershipCardService.Update(membersCard);
+                    
                     var payment = new Payment(IDGenerator.GetId(), borrowedBook.Copy.Price, PaymentType.DamagingBook,
                         borrowedBook.MembershipCard);
                     _paymentService.AddPayment(payment);
@@ -131,6 +140,28 @@ namespace CirkulacijaBiblioteke.ViewModels
             else
             {
                 borrowedBook.Copy.State = Copy.InstanceState.Available;
+            }
+
+            // Checking if member returned book after crossing deadline 
+            if (borrowedBook.CreationDate.AddDays(membersCard.Membership.MembershipExtensionDeadline) < DateTime.Today)
+            {
+                var payingDeadlineExtension = MessageBox.Show("Has member paid for not returning book on time?", "Warning", MessageBoxButton.YesNo);
+                if (payingDeadlineExtension == MessageBoxResult.Yes)
+                {
+                    var newFine = new Fine(DateTime.Now, true);
+                    membersCard.Fines.Add(newFine);
+                    _membershipCardService.Update(membersCard);
+                    
+                    var payment = new Payment(IDGenerator.GetId(), borrowedBook.Copy.Price, PaymentType.DelayedReturn,
+                        borrowedBook.MembershipCard);
+                    _paymentService.AddPayment(payment);   
+                }
+                else
+                {
+                    MessageBox.Show("Member must pay for delaying return before returning book", "Error",
+                        MessageBoxButton.OK);
+                    return;   
+                }
             }
             
             _titleService.UpdateCopy(borrowedBook.Copy.TitleIsbn, borrowedBook.Copy);
