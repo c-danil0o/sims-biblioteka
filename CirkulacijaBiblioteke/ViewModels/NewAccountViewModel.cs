@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -27,8 +28,6 @@ namespace CirkulacijaBiblioteke.ViewModels
         private string? _cityBox;
         private string? _streetBox;
         private string? _numberBox;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public string EmailBox
         {
@@ -149,28 +148,82 @@ namespace CirkulacijaBiblioteke.ViewModels
         public NewAccountViewModel(MemberService memberService, UserAccountService userAccountService)
         {
             _memberService = memberService;
-            RegisterCommand = new DelegateCommand(o => { Register(); });
+            RegisterCommand = new DelegateCommand(o => Register(), o => CanRegister());
             _userAccountService = userAccountService;
         }
         public ICommand RegisterCommand { get; private set; }
-        private void Register()
+
+        public bool ValidateRegistrationInfo()
         {
+            Regex emailRegex = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+
             if (_memberService.GetById(JMBGBox) != null)
             {
-                MessageBox.Show("Existing jmbg", "Error");
+                MessageBox.Show("Existing jmbg", "Error", MessageBoxButton.OK);
+                return false;
             }
-            else
+            if (!emailRegex.IsMatch(EmailBox))
+            {
+                MessageBox.Show("Invalid email format", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            if (!JMBGBox.All(char.IsDigit))
+            {
+                MessageBox.Show("JMBG must contain only digits", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            if (!Regex.IsMatch(NameBox, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Name must contain only letters", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            if (!Regex.IsMatch(LastNameBox, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Last name must contain only letters", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            if (!PhoneBox.All(char.IsDigit))
+            {
+                MessageBox.Show("Phone number must contain only digits", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            return true;
+        }
+        private void Register()
+        {
+            if (ValidateRegistrationInfo())
             {
                 UserAccount account = new UserAccount(EmailBox, PasswordBox, UserAccount.AccountType.Member);
                 _userAccountService.AddUser(account);
                 _memberService.AddMember(new Models.Member(JMBGBox, NameBox, LastNameBox, PhoneBox, account,
                     new Address(CityBox, StreetBox, NumberBox)));
+
+                MessageBox.Show("Account created successfully", "Success", MessageBoxButton.OK);
+                ClearFields();
             }
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        public void ClearFields()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            EmailBox = String.Empty;
+            PasswordBox = String.Empty;
+            JMBGBox = String.Empty;
+            NameBox = String.Empty;
+            LastNameBox = String.Empty;
+            PhoneBox = String.Empty;
+            CityBox = String.Empty;
+            StreetBox = String.Empty;
+            NumberBox = String.Empty;
         }
+
+        public bool CanRegister()
+        {
+            return !string.IsNullOrEmpty(EmailBox) && !string.IsNullOrEmpty(PasswordBox) &&
+            !string.IsNullOrEmpty(JMBGBox) && !string.IsNullOrEmpty(NameBox) &&
+            !string.IsNullOrEmpty(LastNameBox) && !string.IsNullOrEmpty(PhoneBox) &&
+            !string.IsNullOrEmpty(CityBox) && !string.IsNullOrEmpty(StreetBox) &&
+            !string.IsNullOrEmpty(NumberBox);
+        }
+
     }
 }

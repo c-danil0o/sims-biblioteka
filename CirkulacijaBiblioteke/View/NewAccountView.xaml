@@ -15,47 +15,47 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="63,63,0,335" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Email:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding Path = EmailBox , Mode = OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding EmailBox , Mode = TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="210" Height="40" VerticalContentAlignment="Center" Margin="5" />
         </StackPanel>
         <StackPanel Margin="63,128,0,272" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Password:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding PasswordBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding PasswordBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="193" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
         <StackPanel Margin="63,195,0,205" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="JMBG:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding JMBGBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding JMBGBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="211" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
         <StackPanel Margin="471,59,0,341" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Name:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding NameBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding NameBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="209" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
         <StackPanel Margin="471,133,0,267" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Last name:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding LastNameBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding LastNameBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
         <StackPanel Margin="471,200,0,200" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Phone:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding PhoneBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding PhoneBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
         <StackPanel Margin="71,270,0,130" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="City:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding CityBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding CityBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
         <StackPanel Margin="300,273,0,127" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Street:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding StreetBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding StreetBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
         <StackPanel Margin="538,271,0,129" HorizontalAlignment="Left" Orientation="Horizontal" Grid.RowSpan="2">
             <Label Content="Number:" Foreground="WhiteSmoke" VerticalAlignment="Center"></Label>
-            <TextBox Text="{Binding NumberBox, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding NumberBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="186" Height="40" VerticalContentAlignment="Center" />
         </StackPanel>
 
