@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Input;
 using CirkulacijaBiblioteke.Models;
 using CirkulacijaBiblioteke.Services;
+using CirkulacijaBiblioteke.Utilities;
 using CirkulacijaBiblioteke.View;
 
 namespace CirkulacijaBiblioteke.ViewModels
@@ -14,6 +15,7 @@ namespace CirkulacijaBiblioteke.ViewModels
     {
         private BookBorrowService _bookBorrowService;
         private TitleService _titleService;
+        private PaymentService _paymentService;
         private ObservableCollection<BorrowedBooksViewModel> _borrowedBooks;
         private ObservableCollection<BorrowedBooksViewModel> _allBorrowedBooks;
         private ObservableCollection<BorrowedBooksViewModel> _filteredBorrowedBooks;
@@ -21,10 +23,11 @@ namespace CirkulacijaBiblioteke.ViewModels
 
         public ICommand ReturnBookCommand { get; }
 
-        public ReturnBookViewModel(BookBorrowService bookBorrowService, TitleService titleService)
+        public ReturnBookViewModel(BookBorrowService bookBorrowService, TitleService titleService, PaymentService paymentService)
         {
             _bookBorrowService = bookBorrowService;
             _titleService = titleService;
+            _paymentService = paymentService;
             _bookBorrowService.DataChanged += (sender, args) => UpdateTable();
             _allBorrowedBooks = new ObservableCollection<BorrowedBooksViewModel>(
                 _bookBorrowService.GetAll()
@@ -111,6 +114,19 @@ namespace CirkulacijaBiblioteke.ViewModels
             if (IsBookDamaged)
             {
                 borrowedBook.Copy.State = Copy.InstanceState.Damaged;
+                var payingRepairs = MessageBox.Show("Has member payed for damaging book?", "Warning", MessageBoxButton.YesNo);
+                if (payingRepairs == MessageBoxResult.Yes)
+                {
+                    var payment = new Payment(IDGenerator.GetId(), borrowedBook.Copy.Price, PaymentType.DamagingBook,
+                        borrowedBook.MembershipCard);
+                    _paymentService.AddPayment(payment);
+                }
+                else
+                {
+                    MessageBox.Show("Member must pay for damaging book before returning it", "Error",
+                        MessageBoxButton.OK);
+                    return;
+                }
             }
             else
             {
@@ -118,7 +134,6 @@ namespace CirkulacijaBiblioteke.ViewModels
             }
             
             _titleService.UpdateCopy(borrowedBook.Copy.TitleIsbn, borrowedBook.Copy);
-            
             borrowedBook.Returned = true;
             _bookBorrowService.Update(borrowedBook.Id, borrowedBook);
             

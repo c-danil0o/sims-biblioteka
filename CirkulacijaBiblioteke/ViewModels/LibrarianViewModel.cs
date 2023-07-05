@@ -14,7 +14,8 @@ public class LibrarianViewModel : ViewModelBase
     private MembershipCardService _membershipCardService;
     private BookBorrowService _bookBorrowService;
     private TitleService _titleService;
-    public LibrarianViewModel(MemberService memberService, UserAccountService userAccountService, MembershipService membershipService,MembershipCardService membershipCardService, TitleService titleService, BookBorrowService bookBorrowService)
+    private PaymentService _paymentService;
+    public LibrarianViewModel(MemberService memberService, UserAccountService userAccountService, MembershipService membershipService,MembershipCardService membershipCardService, TitleService titleService, BookBorrowService bookBorrowService, PaymentService paymentService)
     {
         _memberService = memberService;
         _userAccountService = userAccountService;
@@ -22,6 +23,7 @@ public class LibrarianViewModel : ViewModelBase
         _membershipCardService = membershipCardService;
         _titleService = titleService;
         _bookBorrowService = bookBorrowService;
+        _paymentService = paymentService;
         _currentView = new NewAccountViewModel(memberService, userAccountService);
 
         NewAccountCommand = new DelegateCommand(o => NewAccountView());
@@ -56,6 +58,6 @@ public class LibrarianViewModel : ViewModelBase
 
     private void ReturnBookView()
     {
-        CurrentView = new ReturnBookViewModel(_bookBorrowService, _titleService);
+        CurrentView = new ReturnBookViewModel(_bookBorrowService, _titleService, _paymentService);
     }
 }
