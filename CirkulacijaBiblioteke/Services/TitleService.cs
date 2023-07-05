@@ -75,6 +75,20 @@ public class TitleService
         Update(isbn, book);
     }
 
+    public void UpdateCopy(string isbn, Copy updatedCopy)
+    {
+        var book = _titleRepository.GetById(isbn);
+        var copyToUpdate = book.Copies.FirstOrDefault(copy => copy.InventoryNumber == updatedCopy.InventoryNumber);
+
+        if (copyToUpdate != null)
+        {
+            copyToUpdate.State = updatedCopy.State;
+            copyToUpdate.Price = updatedCopy.Price;
+            Update(isbn, book);
+        }
+    }
+
+    
     public Copy GetAvailableCopy(string isbn)
     {
         var book = _titleRepository.GetById(isbn);

@@ -14,12 +14,14 @@ public class BorrowedBooksViewModel : ViewModelBase
     public String ReturnDate { get; set; }
     public String CardId { get; set; }
     public String CopyInventoryNumber { get; set; }
+    public int Id { get; set; }
 
     public BorrowedBooksViewModel(BookBorrow bookBorrow, BookBorrowService bookBorrowService)
     {
         _bookBorrow = bookBorrow;
         _bookBorrowService = bookBorrowService;
 
+        Id = bookBorrow.Id;
         var dateTimeFormat = "yyyy-MM-dd HH:mm";
         CreationDate = bookBorrow.CreationDate.ToString(dateTimeFormat);
         ReturnDate = bookBorrow.ReturnDate.ToString(dateTimeFormat);

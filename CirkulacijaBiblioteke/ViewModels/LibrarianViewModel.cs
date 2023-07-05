@@ -56,6 +56,6 @@ public class LibrarianViewModel : ViewModelBase
 
     private void ReturnBookView()
     {
-        CurrentView = new ReturnBookViewModel(_bookBorrowService);
+        CurrentView = new ReturnBookViewModel(_bookBorrowService, _titleService);
     }
 }

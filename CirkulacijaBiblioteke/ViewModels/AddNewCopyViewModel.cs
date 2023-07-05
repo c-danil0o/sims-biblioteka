@@ -100,7 +100,7 @@ public class AddNewCopyViewModel: ViewModelBase
     {
         for (int i = 0; i < Number; i++)
         {
-            var copy = new Copy(SimpleIDGenerator.GetId(), Price, (Copy.InstanceState)SelectedStatus);
+            var copy = new Copy(SimpleIDGenerator.GetId(), Price, (Copy.InstanceState)SelectedStatus, SelectedBook.Isbn);
             _titleService.AddCopy(SelectedBook.Isbn, copy);
         }
         OnRequestClose?.Invoke(this,EventArgs.Empty);   

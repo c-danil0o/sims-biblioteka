@@ -99,7 +99,11 @@ public class BorrowBookViewModel: ViewModelBase
             return;
         }
         
-        var bookBorrow = new BookBorrow(IDGenerator.GetId(), DateTime.Now, DateTime.Now.AddMonths(1), false,
+        copy.State = Copy.InstanceState.Taken;
+        _titleService.UpdateCopy(SelectedBook.Isbn, copy);
+        
+        
+        var bookBorrow = new BookBorrow(IDGenerator.GetId(), DateTime.Now, DateTime.Now.AddDays(-1), false,
             _membershipCard, copy);
         _bookBorrowService.AddBookBorrow(bookBorrow);
 

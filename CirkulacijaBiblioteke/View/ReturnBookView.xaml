@@ -11,6 +11,7 @@
         <Label Content="Search : " HorizontalAlignment="Left" Margin="100,60,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FFF3EDED"/>
         <TextBox Text="{Binding Path = SearchBox , Mode = OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                  Width="180" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="40,0,250,380" />
+        <CheckBox Content="Book Damaged?" IsChecked="{Binding IsBookDamaged}" Height="50" Width="150" Margin="0, 30, 110, 0" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="13" Foreground="#FFF3EDED"/>
         <Button Command="{Binding ReturnBookCommand}" Content="Return" VerticalAlignment="Center"  HorizontalAlignment="Right" FontSize="14" Height="40" Width="182" Margin="0, 0, 120, 380"/>
         <DataGrid ItemsSource="{Binding BookBorrows, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedBookBorrow, UpdateSourceTrigger=PropertyChanged}"
