@@ -5,9 +5,12 @@ using System.Windows;
 using CirkulacijaBiblioteke.Models;
 using CirkulacijaBiblioteke.Repositories;
 using CirkulacijaBiblioteke.Services;
+using CirkulacijaBiblioteke.Utilities;
 using CirkulacijaBiblioteke.View.Archivist;
+using CirkulacijaBiblioteke.View.Guest;
 using CirkulacijaBiblioteke.View.Librarian;
 using CirkulacijaBiblioteke.View.Member;
+using CirkulacijaBiblioteke.ViewModels;
 
 namespace CirkulacijaBiblioteke.View;
 
@@ -16,11 +19,13 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
     private string? _email;
     private string? _password;
     private UserAccountService _userService;
+    private ServiceLocator _serviceLocator;
 
-    public LoginDialog(UserAccountService userService)
+    public LoginDialog(ServiceLocator serviceLocator)
     {
         InitializeComponent();
-        _userService = userService;
+        _serviceLocator = serviceLocator;
+        _userService = serviceLocator.UserAccountService;
         DataContext = this;
     }
 
@@ -64,20 +69,30 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
         {
             case UserAccount.AccountType.Member:
                 Application.Current.MainWindow = new MemberWindow
-                    { DataContext = new MemberViewModel() };
+                {
+                    DataContext =
+                        new MemberWindowViewModel(_serviceLocator.TitleService, _serviceLocator.BookBorrowService)
+                };
                 ;
                 break;
             case UserAccount.AccountType.Archivist:
-                Application.Current.MainWindow = new ArchivistWindow()
-                    { DataContext = new ArchivistViewModel() };
+                Application.Current.MainWindow = new SpecialLibrarianWindow()
+                {
+                    DataContext = new SpecialLibrarianViewModel(_serviceLocator.MemberService,
+                        _serviceLocator.UserAccountService, _serviceLocator.MembershipService,
+                        _serviceLocator.MembershipCardService, _serviceLocator.TitleService,
+                        _serviceLocator.BookBorrowService, _serviceLocator.PaymentService)
+                };
                 ;
                 break;
             case UserAccount.AccountType.Librarian:
                 Application.Current.MainWindow = new LibrarianWindow
                 {
-                    DataContext = new LibrarianViewModel()
+                    DataContext = new LibrarianViewModel(_serviceLocator.MemberService,
+                        _serviceLocator.UserAccountService, _serviceLocator.MembershipService,
+                        _serviceLocator.MembershipCardService, _serviceLocator.TitleService,
+                        _serviceLocator.BookBorrowService, _serviceLocator.PaymentService)
                 };
-                
 
                 break;
         }
@@ -113,5 +128,13 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
     private void PasswordBox_OnPasswordChanged(object sender, RoutedEventArgs e)
     {
         Password = PasswordBox.Password;
+    }
+
+    private void LoginAsGuestButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        DialogResult = true;
+        Application.Current.MainWindow = new GuestWindow
+            { DataContext = new GuestViewModel(_serviceLocator.TitleService, _serviceLocator.BookBorrowService) };
+        ;
     }
 }

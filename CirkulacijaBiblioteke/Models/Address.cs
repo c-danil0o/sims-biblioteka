@@ -14,7 +14,4 @@ public class Address
         Street = street;
         Number = number;
     }
-    
-    
-    
 }

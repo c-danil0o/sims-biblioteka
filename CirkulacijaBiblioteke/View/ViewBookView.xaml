@@ -1,0 +1,115 @@
+﻿<Window x:Class="CirkulacijaBiblioteke.View.ViewBookView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:CirkulacijaBiblioteke.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:ViewBookViewModel}"
+             mc:Ignorable="d"
+             Background="#29262e"
+             Title="AddNewBook" Width="500" Height="600"
+             WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="Book" Margin="10" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" FontSize="20"></Label>
+        <Grid Grid.Row="2" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Title:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0"></Label>
+            <TextBlock Grid.Column="2" Text="{Binding Title}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="250" TextAlignment="Center"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="3" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="ISBN:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0"></Label>
+            <TextBlock Grid.Column="2" Text="{Binding ISBN}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="250" TextAlignment="Center"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="4" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Year:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0"></Label>
+            <TextBlock Grid.Column="2" Text="{Binding Year}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="250" TextAlignment="Center"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="5" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="UDK:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0"></Label>
+            <TextBlock Grid.Column="2" Text="{Binding UDK}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="250" TextAlignment="Center"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="6" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Format:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0"></Label>
+            <TextBlock Grid.Column="2" Text="{Binding Format}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="250" TextAlignment="Center"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="7" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Cover:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0"></Label>
+            <TextBlock Grid.Column="2" Text="{Binding Cover}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="250" TextAlignment="Center"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="8" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Authors:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0"></Label>
+            <TextBlock Grid.Column="2" Text="{Binding Authors}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="250" TextAlignment="Center"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="9" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Publisher:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0,0,0"></Label>
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <TextBlock Text="{Binding Publisher}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="150" TextAlignment="Center"></TextBlock>
+                <Label Content="City:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="10,0,10,0"></Label>
+
+                <TextBlock Text="{Binding City}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="30" Width="100" TextAlignment="Center"></TextBlock>
+                
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="10" Margin="30, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Description:" Foreground="WhiteSmoke" FontSize="14" VerticalAlignment="Center" Margin="30,0"></Label>
+            <TextBlock Grid.Column="2" Text="{Binding Description}" Foreground="WhiteSmoke" FontSize="12" Background="DimGray" Height="100" Width="250" Margin="0,0,0,10" TextAlignment="Center"></TextBlock>
+        </Grid>
+    </Grid>
+</Window>

@@ -9,10 +9,12 @@
         Title="MemberWindow" Height="600" Width="1020"
         Background="#29262e">
     <Window.Resources>
-        <!--<DataTemplate DataType="{x:Type vm:}">
-            <views:EquipmentView />
-        </DataTemplate>-->
-
+        <DataTemplate DataType="{x:Type vm:BooksPaneViewModel}">
+            <view:BooksPaneView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TopTenAnalyticsViewModel}">
+            <view:TopTenAnalyticsView />
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -27,7 +29,9 @@
                    HorizontalAlignment="Left" Margin="20, 0, 0, 0" />
         <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton Content="View Books" Height="50" Foreground="WhiteSmoke"
-                         Style="{DynamicResource ToggleTheme}" Command="{Binding ViewEquipmentCommand}" />
+                         Style="{DynamicResource ToggleTheme}" Command="{Binding ViewBooksCommand}" />
+            <RadioButton Content="Most Popular Books" Height="50" Foreground="WhiteSmoke"
+                         Style="{DynamicResource ToggleTheme}" Command="{Binding ViewTopTenCommand}" />
             
 
         </StackPanel>

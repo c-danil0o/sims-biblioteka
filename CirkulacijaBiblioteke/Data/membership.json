@@ -1,0 +1,37 @@
+﻿[
+  {
+    "Id": 1,
+    "Type": "Unemployed",
+    "Price": 1500.0,
+    "MaxNumberOfBooks": 2,
+    "MembershipExtensionDeadline": 30
+  },
+  {
+    "Id": 2,
+    "Type": "Child",
+    "Price": 500.0,
+    "MaxNumberOfBooks": 3,
+    "MembershipExtensionDeadline": 60
+  },
+  {
+    "Id": 3,
+    "Type": "Employed",
+    "Price": 2000.0,
+    "MaxNumberOfBooks": 5,
+    "MembershipExtensionDeadline": 90
+  },
+  {
+    "Id": 4,
+    "Type": "Retired",
+    "Price": 0.0,
+    "MaxNumberOfBooks": 2,
+    "MembershipExtensionDeadline": 60
+  },
+  {
+    "Id": 5,
+    "Type": "Student",
+    "Price": 800.0,
+    "MaxNumberOfBooks": 4,
+    "MembershipExtensionDeadline": 120
+  }
+]

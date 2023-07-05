@@ -29,9 +29,9 @@ public class MemberService
         DataChanged?.Invoke(this, new EventArgs());
     }
 
-    public void Update(string jmbg, Member member)
+    public void Update(Member member)
     {
-        var oldMember = _memberRepository.GetById(jmbg);
+        var oldMember = _memberRepository.GetById(member.JMBG);
             if (oldMember == null)
             {
                 throw new KeyNotFoundException();
@@ -43,7 +43,7 @@ public class MemberService
 
     }
     
-
+    
 
     public void Delete(string jmbg)
     {

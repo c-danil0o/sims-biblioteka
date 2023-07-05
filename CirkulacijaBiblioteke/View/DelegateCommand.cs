@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ZdravoCorp.GUI.Main;
+namespace CirkulacijaBiblioteke.View;
 
 public class DelegateCommand : ICommand
 {
