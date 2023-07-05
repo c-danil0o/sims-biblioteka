@@ -15,6 +15,9 @@
         <DataTemplate DataType="{x:Type vm:NewMemberCardViewModel}">
             <view:NewMemberCardView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ReturnBookViewModel}">
+            <view:ReturnBookView />
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -32,8 +35,8 @@
                          Style="{DynamicResource ToggleTheme}" Command="{Binding NewAccountCommand}" />
             <RadioButton Content="Member cards" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding NewMemberCardCommand}" />
-         
-
+            <RadioButton Content="Return books" Height="50" Foreground="WhiteSmoke"
+                         Style="{DynamicResource ToggleTheme}" Command="{Binding ReturnBookCommand}" />
         </StackPanel>
         <ContentControl Grid.RowSpan="2" Background="#29262e" Content="{Binding Path=CurrentView}" Grid.Row="0"
                         Grid.Column="1" Margin="10" />
