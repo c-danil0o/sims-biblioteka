@@ -77,7 +77,12 @@ public class AddNewBookViewModel : ViewModelBase
             MessageBox.Show("ISBN format is not valid!");
             return;
         }
-            
+
+        if (_titleService.GetById(ISBN) != null)
+        {
+            MessageBox.Show("Book with same ISBN already exists!");
+            return;
+        }
         _authorsList = new List<Author>();
         MatchAuthors();
         var title = new Title(Title, Description, Format, Cover, UDK, ISBN, Year, _authorsList,

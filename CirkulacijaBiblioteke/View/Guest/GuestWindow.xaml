@@ -12,6 +12,9 @@
         <DataTemplate DataType="{x:Type vm:BooksPaneViewModel}">
             <view:BooksPaneView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TopTenAnalyticsViewModel}">
+            <view:TopTenAnalyticsView />
+        </DataTemplate>
 
     </Window.Resources>
     <Grid>
@@ -28,6 +31,8 @@
         <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton Content="View Books" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding ViewBooksCommand}" />
+            <RadioButton Content="Most popular books" Height="50" Foreground="WhiteSmoke"
+                         Style="{DynamicResource ToggleTheme}" Command="{Binding ViewTopTenCommand}" />
             
 
         </StackPanel>

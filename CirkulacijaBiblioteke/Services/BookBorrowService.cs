@@ -53,5 +53,24 @@ namespace CirkulacijaBiblioteke.Services
         }
 
         public event EventHandler? DataChanged;
+
+        public Dictionary<string, int> GetBorrowCountForLastMonth()
+        {
+            var borrowCount = new Dictionary<string, int>();
+            foreach (var borrow in _bookBorrowRepository.GetAll()
+                         .Where(item => item.CreationDate > DateTime.Now.AddMonths(-1))) 
+            {
+                if (borrowCount.ContainsKey(borrow.Copy.TitleIsbn))
+                {
+                    borrowCount[borrow.Copy.TitleIsbn] += 1;
+                }
+                else
+                {
+                    borrowCount[borrow.Copy.TitleIsbn] = 1;
+                }
+            }
+
+            return borrowCount;
+        }
     }
 }

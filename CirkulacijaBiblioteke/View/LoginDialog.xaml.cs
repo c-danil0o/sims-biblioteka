@@ -69,20 +69,31 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
         {
             case UserAccount.AccountType.Member:
                 Application.Current.MainWindow = new MemberWindow
-                    { DataContext = new MemberWindowViewModel() };
+                {
+                    DataContext =
+                        new MemberWindowViewModel(_serviceLocator.TitleService, _serviceLocator.BookBorrowService)
+                };
                 ;
                 break;
             case UserAccount.AccountType.Archivist:
                 Application.Current.MainWindow = new SpecialLibrarianWindow()
-                    { DataContext = new SpecialLibrarianViewModel(_serviceLocator.TitleService) };
+                {
+                    DataContext = new SpecialLibrarianViewModel(_serviceLocator.MemberService,
+                        _serviceLocator.UserAccountService, _serviceLocator.MembershipService,
+                        _serviceLocator.MembershipCardService, _serviceLocator.TitleService,
+                        _serviceLocator.BookBorrowService, _serviceLocator.PaymentService)
+                };
                 ;
                 break;
             case UserAccount.AccountType.Librarian:
                 Application.Current.MainWindow = new LibrarianWindow
                 {
-                    DataContext = new LibrarianViewModel(_serviceLocator.MemberService, _serviceLocator.UserAccountService, _serviceLocator.MembershipService, _serviceLocator.MembershipCardService, _serviceLocator.TitleService, _serviceLocator.BookBorrowService, _serviceLocator.PaymentService)
+                    DataContext = new LibrarianViewModel(_serviceLocator.MemberService,
+                        _serviceLocator.UserAccountService, _serviceLocator.MembershipService,
+                        _serviceLocator.MembershipCardService, _serviceLocator.TitleService,
+                        _serviceLocator.BookBorrowService, _serviceLocator.PaymentService)
                 };
-                
+
                 break;
         }
     }
@@ -123,7 +134,7 @@ public partial class LoginDialog : Window, INotifyPropertyChanged
     {
         DialogResult = true;
         Application.Current.MainWindow = new GuestWindow
-            { DataContext = new GuestViewModel(_serviceLocator.TitleService) };
+            { DataContext = new GuestViewModel(_serviceLocator.TitleService, _serviceLocator.BookBorrowService) };
         ;
     }
 }

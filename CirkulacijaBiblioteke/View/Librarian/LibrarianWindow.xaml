@@ -31,9 +31,9 @@
         <TextBlock Text="Librarian" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left"
                    Margin="20, 0, 0, 0" />
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <RadioButton Content="New User Account" Height="50" Foreground="WhiteSmoke"
+            <RadioButton Content="Add new member" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding NewAccountCommand}" />
-            <RadioButton Content="Member cards" Height="50" Foreground="WhiteSmoke"
+            <RadioButton Content="Cards and borrowing" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding NewMemberCardCommand}" />
             <RadioButton Content="Return books" Height="50" Foreground="WhiteSmoke"
                          Style="{DynamicResource ToggleTheme}" Command="{Binding ReturnBookCommand}" />
