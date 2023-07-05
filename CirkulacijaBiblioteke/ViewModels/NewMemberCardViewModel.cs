@@ -188,6 +188,20 @@ public class NewMemberCardViewModel : ViewModelBase
             MessageBox.Show("Member card is not active", "Error", MessageBoxButton.OK);
             return;
         }
+
+        var bookCount = 0;
+        foreach (var card in _membershipService.GetAll())
+        {
+            if (card.Id == membershipCard.Membership.Id)
+            {
+                bookCount = card.MaxNumberOfBooks;
+            }
+        }
+        if (_bookBorrowService.CountHoldingBooksByCardId(membershipCard.Id) >= bookCount)
+        {
+            MessageBox.Show("Member already has maximum number of books!", "Error", MessageBoxButton.OK);
+            return;
+        }
         
         var window = new BorrowBookView()
         {

@@ -18,4 +18,9 @@ public class CopyViewModel
         Price = price;
         Isbn = isbn;
     }
+
+    public override string ToString()
+    {
+        return $"Title: {Title}, Authors: {Authors}, InventoryNumber: {InventoryNumber}, State: {State}, Price: {Price}, Isbn: {Isbn}";
+    }
 }

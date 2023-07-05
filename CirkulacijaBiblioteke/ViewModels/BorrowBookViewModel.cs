@@ -31,7 +31,7 @@ public class BorrowBookViewModel: ViewModelBase
         _membershipCard = membershipCard;
         _titleService.DataChanged += (sender, args) => UpdateTable();
         _allBooks = new ObservableCollection<BookViewModel>();
-        foreach (var title in _titleService.GetAll())
+        foreach (var title in _titleService.GetAllWithCopies())
         {
             _allBooks.Add(new BookViewModel(title));
         }

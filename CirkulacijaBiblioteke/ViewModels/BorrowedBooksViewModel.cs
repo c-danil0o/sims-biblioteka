@@ -25,7 +25,7 @@ public class BorrowedBooksViewModel : ViewModelBase
         var dateTimeFormat = "yyyy-MM-dd HH:mm";
         CreationDate = bookBorrow.CreationDate.ToString(dateTimeFormat);
         ReturnDate = bookBorrow.ReturnDate.ToString(dateTimeFormat);
-        CardId = bookBorrow.MembershipCard.Membership.Id.ToString();
+        CardId = bookBorrow.MembershipCard.Id.ToString();
         CopyInventoryNumber = bookBorrow.Copy.InventoryNumber.ToString();
     }
     

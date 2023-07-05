@@ -21,6 +21,11 @@ public class TitleService
     {
         return _titleRepository.GetAll() as List<Title>;
     }
+    
+    public List<Title>? GetAllWithCopies()
+    {
+        return _titleRepository.GetAll().Where(item=> item.Copies != null).ToList();
+    }
 
     public Title? GetById(string isbn)
     {
@@ -74,6 +79,7 @@ public class TitleService
         book.Copies.RemoveAll(item => item.InventoryNumber == inventoryNumber);
         Update(isbn, book);
     }
+    
 
     public void UpdateCopy(string isbn, Copy updatedCopy)
     {

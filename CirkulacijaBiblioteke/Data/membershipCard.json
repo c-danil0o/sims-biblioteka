@@ -1,1 +1,161 @@
-[{"Membership":{"Id":5,"Type":4,"Price":1000.0,"MaxNumberOfBooks":4,"MembershipExtensionDeadline":120},"Id":865912617,"ValidUntil":"2024-01-03T17:01:21.6253738+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":3,"Type":2,"Price":2000.0,"MaxNumberOfBooks":5,"MembershipExtensionDeadline":90},"Id":-1191093189,"ValidUntil":"2024-01-03T17:03:16.6094261+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":4,"Type":3,"Price":1000.0,"MaxNumberOfBooks":2,"MembershipExtensionDeadline":60},"Id":-930566883,"ValidUntil":"2024-01-03T17:04:29.4416812+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":5,"Type":4,"Price":1000.0,"MaxNumberOfBooks":4,"MembershipExtensionDeadline":120},"Id":496432070,"ValidUntil":"2024-01-03T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":4,"Type":3,"Price":1000.0,"MaxNumberOfBooks":2,"MembershipExtensionDeadline":60},"Id":-790064698,"ValidUntil":"2024-01-03T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":5,"Type":4,"Price":1000.0,"MaxNumberOfBooks":4,"MembershipExtensionDeadline":120},"Id":-763327607,"ValidUntil":"2024-01-04T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":4,"Type":3,"Price":1000.0,"MaxNumberOfBooks":2,"MembershipExtensionDeadline":60},"Id":851242597,"ValidUntil":"2024-01-04T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":3,"Type":2,"Price":2000.0,"MaxNumberOfBooks":5,"MembershipExtensionDeadline":90},"Id":-560040703,"ValidUntil":"2024-01-04T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":5,"Type":4,"Price":800.0,"MaxNumberOfBooks":4,"MembershipExtensionDeadline":120},"Id":1140874859,"ValidUntil":"2024-01-04T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":3,"Type":2,"Price":2000.0,"MaxNumberOfBooks":5,"MembershipExtensionDeadline":90},"Id":-828612883,"ValidUntil":"2024-01-05T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[]},{"Membership":{"Id":2,"Type":1,"Price":500.0,"MaxNumberOfBooks":3,"MembershipExtensionDeadline":60},"Id":-1752073823,"ValidUntil":"2024-01-04T00:00:00+01:00","Status":0,"Warnings":[],"Fines":[{"Date":"2023-07-05T12:59:33.4119477+02:00","Paid":true}]}]
+[
+  {
+    "Membership": {
+      "Id": 5,
+      "Type": 4,
+      "Price": 1000.0,
+      "MaxNumberOfBooks": 4,
+      "MembershipExtensionDeadline": 120
+    },
+    "Id": 865912617,
+    "ValidUntil": "2024-01-03T17:01:21.6253738+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 3,
+      "Type": 2,
+      "Price": 2000.0,
+      "MaxNumberOfBooks": 5,
+      "MembershipExtensionDeadline": 90
+    },
+    "Id": -1191093189,
+    "ValidUntil": "2024-01-03T17:03:16.6094261+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 4,
+      "Type": 3,
+      "Price": 1000.0,
+      "MaxNumberOfBooks": 2,
+      "MembershipExtensionDeadline": 60
+    },
+    "Id": -930566883,
+    "ValidUntil": "2024-01-03T17:04:29.4416812+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 5,
+      "Type": 4,
+      "Price": 1000.0,
+      "MaxNumberOfBooks": 4,
+      "MembershipExtensionDeadline": 120
+    },
+    "Id": 496432070,
+    "ValidUntil": "2024-01-03T00:00:00+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 4,
+      "Type": 3,
+      "Price": 1000.0,
+      "MaxNumberOfBooks": 2,
+      "MembershipExtensionDeadline": 60
+    },
+    "Id": -790064698,
+    "ValidUntil": "2024-01-03T00:00:00+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 5,
+      "Type": 4,
+      "Price": 1000.0,
+      "MaxNumberOfBooks": 4,
+      "MembershipExtensionDeadline": 120
+    },
+    "Id": -763327607,
+    "ValidUntil": "2024-01-04T00:00:00+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 4,
+      "Type": 3,
+      "Price": 1000.0,
+      "MaxNumberOfBooks": 2,
+      "MembershipExtensionDeadline": 60
+    },
+    "Id": 851242597,
+    "ValidUntil": "2024-01-04T00:00:00+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 3,
+      "Type": 2,
+      "Price": 2000.0,
+      "MaxNumberOfBooks": 5,
+      "MembershipExtensionDeadline": 90
+    },
+    "Id": -560040703,
+    "ValidUntil": "2024-01-04T00:00:00+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 5,
+      "Type": 4,
+      "Price": 800.0,
+      "MaxNumberOfBooks": 4,
+      "MembershipExtensionDeadline": 120
+    },
+    "Id": 1140874859,
+    "ValidUntil": "2024-01-04T00:00:00+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 3,
+      "Type": 2,
+      "Price": 2000.0,
+      "MaxNumberOfBooks": 5,
+      "MembershipExtensionDeadline": 90
+    },
+    "Id": -828612883,
+    "ValidUntil": "2024-01-05T00:00:00+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": []
+  },
+  {
+    "Membership": {
+      "Id": 2,
+      "Type": 1,
+      "Price": 500.0,
+      "MaxNumberOfBooks": 3,
+      "MembershipExtensionDeadline": 60
+    },
+    "Id": -1752073823,
+    "ValidUntil": "2024-01-04T00:00:00+01:00",
+    "Status": 0,
+    "Warnings": [],
+    "Fines": [
+      {
+        "Date": "2023-07-05T12:59:33.4119477+02:00",
+        "Paid": true
+      }
+    ]
+  }
+]

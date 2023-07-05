@@ -51,6 +51,11 @@ namespace CirkulacijaBiblioteke.Services
             _bookBorrowRepository.Delete(_bookBorrowRepository.GetById(id));
             DataChanged?.Invoke(this, new EventArgs());
         }
+        
+        public int CountHoldingBooksByCardId(int id)
+        {
+           return  _bookBorrowRepository.GetAll().Where(item => item.MembershipCard.Id == id && !item.Returned).Count();
+        }
 
         public event EventHandler? DataChanged;
 
@@ -73,4 +78,6 @@ namespace CirkulacijaBiblioteke.Services
             return borrowCount;
         }
     }
+    
+    
 }
